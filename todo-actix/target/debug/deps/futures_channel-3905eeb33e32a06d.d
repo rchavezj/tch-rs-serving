@@ -1,0 +1,10 @@
+/Users/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/futures_channel-3905eeb33e32a06d.rmeta: /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/lib.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/lock.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/mod.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/queue.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/sink_impl.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/oneshot.rs
+
+/Users/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/futures_channel-3905eeb33e32a06d.d: /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/lib.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/lock.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/mod.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/queue.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/sink_impl.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/oneshot.rs
+
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/lib.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/lock.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/mod.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/queue.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/mpsc/sink_impl.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.6/src/oneshot.rs:
