@@ -6,7 +6,7 @@ use std::io;
 
 async fn status() -> impl Responder {
     web::HttpResponse::Ok().json(Status {
-        status: "Ok".to_string(),
+        status: "UP".to_string(),
     })
 }
 
