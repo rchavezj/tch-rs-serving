@@ -2,7 +2,7 @@ use config::ConfigError;
 use serde::Deserialize;
 
 #[derive(Deserialize)]
-pub struct ServerCongig {
+pub struct ServerConfig {
     pub port: i32,
     pub host: String,
 }
