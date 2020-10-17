@@ -4,3 +4,8 @@ use serde::Serialize;
 pub struct Status {
     pub status: String,
 }
+
+#[derive(Serialize)]
+pub struct Error {
+    pub statuc: String,
+}

@@ -16,7 +16,9 @@ async fn status() -> impl Responder {
 async fn main() -> io::Result<()> {
     dotenv().ok();
 
-    let config = crate::config::Config::from_env().unwrap();
+    let config = Config::from_env().unwrap();
+
+    // let pool = config.pg.create_poo(NoTls).unwrap();
 
     println!(
         "Starting server at http://{}:{}/",
