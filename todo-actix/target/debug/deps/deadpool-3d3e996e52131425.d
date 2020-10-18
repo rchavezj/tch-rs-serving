@@ -1,0 +1,11 @@
+/Users/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/deadpool-3d3e996e52131425.rmeta: /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/lib.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/compat_0_4.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/mod.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/config.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/errors.rs
+
+/Users/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/libdeadpool-3d3e996e52131425.rlib: /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/lib.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/compat_0_4.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/mod.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/config.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/errors.rs
+
+/Users/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/deadpool-3d3e996e52131425.d: /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/lib.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/compat_0_4.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/mod.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/config.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/errors.rs
+
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/lib.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/compat_0_4.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/mod.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/config.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/deadpool-0.5.2/src/managed/errors.rs:

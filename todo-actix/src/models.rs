@@ -7,5 +7,5 @@ pub struct Status {
 
 #[derive(Serialize)]
 pub struct Error {
-    pub statuc: String,
+    pub status: String,
 }

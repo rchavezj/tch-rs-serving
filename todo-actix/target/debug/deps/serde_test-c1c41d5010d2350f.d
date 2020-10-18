@@ -1,0 +1,12 @@
+/Users/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/serde_test-c1c41d5010d2350f.rmeta: /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/lib.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/assert.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/ser.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/de.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/token.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/error.rs
+
+/Users/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/libserde_test-c1c41d5010d2350f.rlib: /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/lib.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/assert.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/ser.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/de.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/token.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/error.rs
+
+/Users/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/serde_test-c1c41d5010d2350f.d: /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/lib.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/assert.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/ser.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/de.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/token.rs /Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/error.rs
+
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/lib.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/assert.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/ser.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/de.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/token.rs:
+/Users/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_test-0.8.23/src/error.rs:
