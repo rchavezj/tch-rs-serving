@@ -1,0 +1,1 @@
+{"rustc":17941782008528629481,"features":"[]","target":1820355359555376154,"profile":16668067249205866872,"path":3397278706545971328,"deps":[[2607110631787583151,"tokio_postgres",false,9804450765476996172]],"local":[{"CheckDepInfo":{"dep_info":"debug/.fingerprint/tokio-pg-mapper-8684c9024a4a3e08/dep-lib-tokio-pg-mapper"}}],"rustflags":[],"metadata":4987525919930537951,"config":0}
