@@ -19,11 +19,8 @@ pub struct Config {
 
 impl Config {
     pub fn from_env() -> Result<Self, ConfigError> {
-        println!("test1");
         let mut cfg = config::Config::new();
-        println!("test2");
         cfg.merge(config::Environment::new())?;
-        println!("test3");
         cfg.try_into()
     }
 
