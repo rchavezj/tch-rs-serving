@@ -1,2 +1,0 @@
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/rchavezj/Github/rust_graphql/todo-actix/target/rls/debug/build/typenum-51875315964a84ab/out/consts.rs
-cargo:rustc-env=TYPENUM_BUILD_OP=/Users/rchavezj/Github/rust_graphql/todo-actix/target/rls/debug/build/typenum-51875315964a84ab/out/op.rs
