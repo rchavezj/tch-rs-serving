@@ -1,0 +1,13 @@
+/home/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/tracing-8b90e0f75c8d6baa.rmeta: /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/lib.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/macros.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/dispatcher.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/field.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/instrument.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/level_filters.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/span.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/stdlib.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/subscriber.rs
+
+/home/rchavezj/Github/rust_graphql/todo-actix/target/debug/deps/tracing-8b90e0f75c8d6baa.d: /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/lib.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/macros.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/dispatcher.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/field.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/instrument.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/level_filters.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/span.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/stdlib.rs /home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/subscriber.rs
+
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/lib.rs:
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/macros.rs:
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/dispatcher.rs:
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/field.rs:
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/instrument.rs:
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/level_filters.rs:
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/span.rs:
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/stdlib.rs:
+/home/rchavezj/.cargo/registry/src/github.com-1ecc6299db9ec823/tracing-0.1.21/src/subscriber.rs:
