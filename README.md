@@ -10,3 +10,10 @@ psql -h 127.0.0.1 -p 5432 -U actix actix
 psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql
 
 curl http://127.0.0.1:5432/
+curl http://127.0.0.1:5432/todos
+curl http://127.0.0.1:5432/todos | jq .
+
+
+(1) sudo docker-compose up -d
+(2) sudo docker ps 
+(3) psql -h 127.0.0.1 -p 5432 -U actix actix
