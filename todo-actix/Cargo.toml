@@ -21,10 +21,21 @@ futures = "0.3.4"
 serde = { version = "1.0.104", features = ["derive"] }
 dotenv = "0.15.0"
 config = "0.10.1"
+
+# (1) Event-driven, non-blocking platform to
+#     write asunchronous applications in rust.
+# (2) Actix uses tokio event loop for 
+#     the actor system. 
+# (3) Bunch of traits and macros to facilitate
+#     the mapping from postgres tables to structs
 tokio-pg-mapper = "0.1.4"
 tokio-pg-mapper-derive = "0.1.4"
+
 deadpool-postgres = "0.5.0"
-tokio-postgres = "0.5.1"
+tokio-postgres = "0.5.1" 
+
+
+
 slog = "2.5.2"
 slog-term = "2.5.0"
 slog-async = "2.4.0"
