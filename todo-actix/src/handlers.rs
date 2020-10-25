@@ -13,7 +13,7 @@ pub async fn status() -> impl Responder {
 pub async fn get_todos(db_pool: web::Data<Pool>) -> impl Responder {
     
     let client: Client = db_pool.get().await.expect(
-        "Errir connecting to the database"
+        "Error connecting to the database"
     );
 
     let result = db::get_todos(&client).await;
