@@ -21,7 +21,7 @@ curl http://127.0.0.1:8080/todos | jq . </br>
 (1) sudo docker-compose up -d </br> 
 (2) sudo docker ps </br>
 (3) psql -h 127.0.0.1 -p 5432 -U actix actix </br>
-    &nbsp;&nbsp;&nbsp; (3a List of relations):  \d  </br>
+    &nbsp;&nbsp;&nbsp; (3a List of relations)  \d  </br>
     &nbsp;&nbsp;&nbsp; (3b) select * from todo_item; </br>
     &nbsp;&nbsp;&nbsp; (3c) select * from todo_list; </br>
 (4) curl http://127.0.0.1:8080/todos </br>
