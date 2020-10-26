@@ -48,6 +48,9 @@ pub async fn create_todo(
         "Error connecting to the database"
     );
 
+    println!(
+        "YOLO" );
+
     let result = db::create_todo(&client, json.title.clone()).await;
 
     match result {

@@ -39,7 +39,10 @@ pub async fn get_items(client: &Client, list_id: i32) -> Result<Vec<TodoItem>, i
 
 
 
-pub async fn create_todo(client: &Client, title: String) -> Result<TodoList, io::Error> {
+pub async fn create_todo(
+    client: &Client, 
+    title: String
+) -> Result<TodoList, io::Error> {
 
     let statement = client.prepare(
         "insert into todo_list (title) values ($1) returning id, title"
