@@ -36,4 +36,4 @@ curl http://127.0.0.1:8080/todos/1/items -s | jq . </br>
 
 
 # If the user wishes to create a new todo
-curl -X POST -H "Content-Type: application/json" -d '{"title": "List 3"}' http://127.0.0.1:8080/todos/1/items </br>
+curl -X POST -H "Content-Type: application/json" -d '{"title": "List 3"}' http://127.0.0.1:8080/todos </br>
