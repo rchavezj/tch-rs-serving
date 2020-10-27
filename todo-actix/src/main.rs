@@ -21,7 +21,7 @@ async fn main() -> io::Result<()> {
         config.server.host, config.server.port
     );
 
-    HttpServer::new( move || {
+    HttpServer::new(move || {
         App::new()
             .data(pool.clone())
             .route("/", web::get().to(status))
