@@ -20,7 +20,10 @@ pub async fn get_todos(client: &Client) -> Result<Vec<TodoList>, io::Error > {
 }
 
 
-pub async fn get_items(client: &Client, list_id: i32) -> Result<Vec<TodoItem>, io::Error> {
+pub async fn get_items(
+    client: &Client, 
+    list_id: i32
+) -> Result<Vec<TodoItem>, io::Error> {
     
     // Get the latest first
     let statement = client.prepare(

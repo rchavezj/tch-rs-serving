@@ -43,13 +43,14 @@ pub async fn create_todo(
     db_pool: web::Data<Pool>, 
     json: web::Json<CreateTodoList>
 ) -> impl Responder {
-
+    
+    println!("YOLO" );
+    
     let client: Client = db_pool.get().await.expect(
         "Error connecting to the database"
     );
 
-    println!(
-        "YOLO" );
+   
 
     let result = db::create_todo(&client, json.title.clone()).await;
 
