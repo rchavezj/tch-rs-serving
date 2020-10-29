@@ -3,8 +3,8 @@
 This project will contain a back end stack with rust web framework Actix for fast request performance. 
 
 # Docker commands
-docker-compose up -d </br>
-docker ps </br>
+sudo docker-compose up -d </br>
+sudo docker ps </br>
 
 # PSQL Commands
 psql -h 127.0.0.1 -p 5432 -U actix actix </br>
@@ -36,4 +36,4 @@ curl http://127.0.0.1:8080/todos/1/items -s | jq . </br>
 
 
 # If the user wishes to create a new todo
-curl -X POST -H "Content-Type: application/json" -d '{"title": "List 3"}' http://127.0.0.1:8080/todos/1/items </br>
+curl -X POST -H "Content-Type: application/json" -d '{"title": "List 3"}' http://127.0.0.1:8080/todos </br>
