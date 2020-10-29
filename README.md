@@ -37,3 +37,16 @@ curl http://127.0.0.1:8080/todos/1/items -s | jq . </br>
 
 # If the user wishes to create a new todo
 curl -X POST -H "Content-Type: application/json" -d '{"title": "List 3"}' http://127.0.0.1:8080/todos </br>
+
+
+# Update content for put commands
+curl http://127.0.0.1:8080/todos/2/items -s | jq . </br>
+curl -X PUT http://127.0.0.1:8080/todos/2/items/3 -s | jq . --> (Success true) </br>
+curl -X PUT http://127.0.0.1:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
+curl -X PUT http://127.0.0.1:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
+curl http://127.0.0.1:8080/todos/2/items -s | jq . 
+
+
+# Performance Tests
+cargo build --release
+ab -n 100000 -k -c 30 -q http://127.0.0.1:8080/
