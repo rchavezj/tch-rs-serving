@@ -1,6 +1,7 @@
 use crate::db;
-use crate::models::{Status, CreateTodoList};
+use crate::models::{Status, CreateTodoList, ResultResponse};
 use deadpool_postgres::{Pool, Client};
+use std::io::ErrorKind::Other;
 use actix_web::{web, Responder, HttpResponse};
 
 
@@ -24,7 +25,10 @@ pub async fn get_todos(db_pool: web::Data<Pool>) -> impl Responder {
     }
 }
 
-pub async fn get_items(db_pool: web::Data<Pool>, path: web::Path<(i32,)>) -> impl Responder{
+pub async fn get_items(
+    db_pool: web::Data<Pool>, 
+    path: web::Path<(i32,)>
+) -> impl Responder{
 
     let client: Client = 
         db_pool.get().await.expect(
@@ -44,13 +48,9 @@ pub async fn create_todo(
     json: web::Json<CreateTodoList>
 ) -> impl Responder {
     
-    println!("YOLO" );
-    
     let client: Client = db_pool.get().await.expect(
         "Error connecting to the database"
     );
-
-   
 
     let result = db::create_todo(&client, json.title.clone()).await;
 
@@ -58,4 +58,26 @@ pub async fn create_todo(
         Ok(todo) => HttpResponse::Ok().json(todo),
         Err(_) => HttpResponse::InternalServerError().into()
     }
+}
+
+
+
+pub async fn check_item(
+    db_pool: web::Data<Pool>,
+    path: web::Path<(i32, i32)>
+) -> impl Responder {
+
+    let client: Client = db_pool.get().await.expect(
+        "Error connecting to the database"
+    );
+
+    //path.0 --> list id, path.1 --> item id
+    let result = db::check_item(&client, path.0, path.1).await;
+
+    match result {
+        Ok(()) => HttpResponse::Ok().json(ResultResponse{success: true}),
+        Err(ref e) if e.kind() == Other => HttpResponse::Ok().json(ResultResponse{success: false}),
+        Err(_) => HttpResponse::InternalServerError().into()
+    }
+
 }
