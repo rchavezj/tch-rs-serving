@@ -57,4 +57,4 @@ ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/
 
 
 # Put the app into a container and limit the resources. The idea is to simulate a small 'BM' in a cloud provider
-sudo docker-compose --compatibility up
+sudo docker-compose --compatibility up </br>
