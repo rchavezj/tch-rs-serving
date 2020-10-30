@@ -211,30 +211,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "actix-todo"
-version = "0.1.0"
-dependencies = [
- "actix-http",
- "actix-rt",
- "actix-service",
- "actix-web",
- "config",
- "deadpool-postgres",
- "dotenv",
- "futures",
- "lazy_static",
- "serde 1.0.116",
- "serde_json",
- "slog",
- "slog-async",
- "slog-envlogger",
- "slog-term",
- "tokio-pg-mapper",
- "tokio-pg-mapper-derive",
- "tokio-postgres",
-]
-
-[[package]]
 name = "actix-utils"
 version = "1.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1939,6 +1915,30 @@ name = "tinyvec"
 version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "238ce071d267c5710f9d31451efec16c5ee22de34df17cc05e56cbc92e967117"
+
+[[package]]
+name = "todo-actix"
+version = "0.1.0"
+dependencies = [
+ "actix-http",
+ "actix-rt",
+ "actix-service",
+ "actix-web",
+ "config",
+ "deadpool-postgres",
+ "dotenv",
+ "futures",
+ "lazy_static",
+ "serde 1.0.116",
+ "serde_json",
+ "slog",
+ "slog-async",
+ "slog-envlogger",
+ "slog-term",
+ "tokio-pg-mapper",
+ "tokio-pg-mapper-derive",
+ "tokio-postgres",
+]
 
 [[package]]
 name = "tokio"

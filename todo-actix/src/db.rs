@@ -6,7 +6,7 @@ use std::io;
 pub async fn get_todos(client: &Client) -> Result<Vec<TodoList>, io::Error > {
 
     let statement = client.prepare(
-        "select * from todo_list order by id desc"
+        "select * from todo_list order by id desc limit 10"
     ).await.unwrap();
 
     let todos = client.query(&statement, &[])

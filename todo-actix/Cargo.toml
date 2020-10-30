@@ -1,5 +1,5 @@
 [package]
-name = "actix-todo"
+name = "todo-actix"
 version = "0.1.0"
 authors = ["Julio Daniel Reyes <nemesiscodex@gmail.com>"]
 edition = "2018"

@@ -2,6 +2,8 @@
 
 This project will contain a back end stack with rust web framework Actix for fast request performance. 
 
+Remember to remove './todo-actix/target' folder before every git commit. </br>
+
 # Docker commands
 sudo docker-compose up -d </br>
 sudo docker ps </br>
@@ -45,6 +47,8 @@ curl -X PUT http://127.0.0.1:8080/todos/2/items/3 -s | jq . --> (Success true) <
 curl -X PUT http://127.0.0.1:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
 curl -X PUT http://127.0.0.1:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
 curl http://127.0.0.1:8080/todos/2/items -s | jq . 
+
+
 
 
 # Performance Tests
