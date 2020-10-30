@@ -46,12 +46,12 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success true) </br>
 curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
 curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
-curl http://localhost:8080/todos/2/items -s | jq . 
+curl http://localhost:8080/todos/2/items -s | jq . </br>
 
 
 
 
 # Performance Tests
-cargo build --release
-ab -n 100000 -k -c 30 -q http://localhost:8080/
-ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/todos
+cargo build --release </br>
+ab -n 100000 -k -c 30 -q http://localhost:8080/ </br>
+ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
