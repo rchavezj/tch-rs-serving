@@ -53,6 +53,8 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 cargo build --release </br>
 cargo run --release </br>
 ab -n 100000 -k -c 30 -q http://localhost:8080/ </br>
+ab -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
+ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/ </br>
 ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
 
 
