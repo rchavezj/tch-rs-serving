@@ -26,6 +26,7 @@ curl http://localhost:8080/todos | jq . </br>
     &nbsp;&nbsp;&nbsp; (3a List of relations)  \d  </br>
     &nbsp;&nbsp;&nbsp; (3b) select * from todo_item; </br>
     &nbsp;&nbsp;&nbsp; (3c) select * from todo_list; </br>
+![alt text](https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/storedProcedureDisplay.png)
 
 # If the user wishes to display the todos list
 (4) curl http://localhost:8080/todos </br>
