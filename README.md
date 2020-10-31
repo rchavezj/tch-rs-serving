@@ -48,6 +48,8 @@ curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) 
 curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
 curl http://localhost:8080/todos/2/items -s | jq . </br>
 
+![alt text](https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/putFunction.png)
+
 
 # Put the app into a container and limit the resources. The idea is to simulate a small 'BM' in a cloud provider
 sudo docker-compose --compatibility up </br>
@@ -63,4 +65,3 @@ sudo docker-compose --compatibility up </br>
 (6) ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
 
 
-![alt text](https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/putFunction.png)
