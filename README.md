@@ -49,14 +49,16 @@ curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) 
 curl http://localhost:8080/todos/2/items -s | jq . </br>
 
 
-# Performance Tests
-cargo build --release </br>
-cargo run --release </br>
-ab -n 100000 -k -c 30 -q http://localhost:8080/ </br>
-ab -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
-ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/ </br>
-ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
-
-
 # Put the app into a container and limit the resources. The idea is to simulate a small 'BM' in a cloud provider
 sudo docker-compose --compatibility up </br>
+
+
+# Performance Tests
+(1) cargo build --release </br>
+(2) cargo run --release </br>
+(3) sudo docker-compose --compatibility up </br>
+(4) ab -n 100000 -k -c 30 -q http://localhost:8080/ </br>
+(5) ab -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
+(6) ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/ </br>
+(6) ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
+
