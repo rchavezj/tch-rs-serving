@@ -44,7 +44,7 @@ curl http://localhost:8080/todos | jq . </br>
 curl -X POST -H "Content-Type: application/json" -d '{"title": "List 3"}' http://localhost:8080/todos </br>
 curl http://localhost:8080/todos </br>
 curl http://localhost:8080/todos | jq . </br>
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/insertNewList.png" width="820" height="500" /> 
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/POSTNewTodoList.png" width="820" height="500" /> 
 
 
 # Update content for put commands
