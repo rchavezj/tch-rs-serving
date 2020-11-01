@@ -66,7 +66,7 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 
 
 # Put the app into a container and limit the resources. 
-## The idea is to simulate a small 'BM' in a cloud provider (Performance Test)
+### The idea is to simulate a small 'BM' in a cloud provider (Performance Test)
 (1) sudo docker-compose --compatibility up </br>
 <img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerComposeCompatibility.png"/>   </br>
 (2) ab -n 100000 -k -c 30 -q http://localhost:8080/ </br>
