@@ -53,7 +53,7 @@ curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success true) <
 curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
 curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
 curl http://localhost:8080/todos/2/items -s | jq . </br>
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/putFunction.png" width="820" height="400" /> 
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/putFunction.png" width="820" height="500" /> 
 
 
 # Performance Tests (Local host)
