@@ -26,7 +26,7 @@ psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 
 
 # If the user wishes to display the todos list
-## curl commandds when program (server) is running (cargo run)
+### curl commandds when program (server) is running (cargo run)
 curl http://localhost:8080/ </br>
 curl http://localhost:8080/todos </br>
 curl http://localhost:8080/todos | jq . </br>
@@ -68,11 +68,11 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 # Put the app into a container and limit the resources. 
 ## The idea is to simulate a small 'BM' in a cloud provider (Performance Test)
 (1) sudo docker-compose --compatibility up </br>
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerComposeCompatibility.png"/> 
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerComposeCompatibility.png"/>   </br>
 (2) ab -n 100000 -k -c 30 -q http://localhost:8080/ </br>
 (3) ab -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
 (4) ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/ </br>
 (5) ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerReleasePt1.png" width="820" height="400" /> 
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerReleasePt1.png" width="820" height="400" />  </br>
 
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerReleasePt2.png" width="820" height="400" /> 
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerReleasePt2.png" width="820" height="400" />  </br>
