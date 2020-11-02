@@ -11,7 +11,9 @@ pub async fn status() -> impl Responder {
     })
 }
 
-pub async fn get_todos(db_pool: web::Data<Pool>) -> impl Responder {
+pub async fn get_todos(
+    db_pool: web::Data<Pool>
+) -> impl Responder {
     
     let client: Client = db_pool.get().await.expect(
         "Error connecting to the database"
@@ -72,7 +74,7 @@ pub async fn check_item(
     );
 
     //path.0 --> list id, path.1 --> item id
-    let result = db::check_item(&client, path.0, path.1).await;
+    let result: Result<(), {unkown}> = db::check_item(&client, path.0, path.1).await;
 
     match result {
         Ok(()) => HttpResponse::Ok().json(ResultResponse{success: true}),

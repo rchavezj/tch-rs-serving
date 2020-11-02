@@ -7,6 +7,7 @@ Remember to remove './todo-actix/target' folder before every git commit. </br>
 # Docker commands
 sudo docker-compose up -d </br>
 sudo docker ps </br>
+sudo docker-compose up -d postgres </br>
 
 # PSQL Commands
 psql -h 127.0.0.1 -p 5432 -U actix actix </br>
@@ -76,3 +77,17 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 <img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerReleasePt1.png" width="820" height="400" />  </br>
 
 <img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerReleasePt2.png" width="820" height="400" />  </br>
+
+
+# Error handling and Logging (Create appropriate msg to user)
+### Series of commands to see why we need error handling
+(0) cargo run --> Switch terminal tab </br>
+(1) curl localhost:8080/todos -v | jq . </br>
+(2) docker-compose up -d postgres </br>
+(3) curl localhost:8080/todos -v | jq . </br>
+(4) psql -h 127.0.0.1 -p 5432 -U actix actix </br>
+(5) docker-compose stop </br>
+(6) curl localhost:8080/todos -v | jq . --> curl (52) Empty reply from server </br>
+### Switch terminal tabs back to restart cargo run but with trace env variable (RUST_BACKREACE=1) 
+(7) RUST_BACKREACE=1 cargo run (Switch terminal tabs again) </br>
+(8) curl localhost:8080/todos -v | jq . --> Uglier stack trace </br>

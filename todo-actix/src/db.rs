@@ -3,7 +3,10 @@ use deadpool_postgres::Client;
 use tokio_pg_mapper::FromTokioPostgresRow;
 use std::io;
 
-pub async fn get_todos(client: &Client) -> Result<Vec<TodoList>, io::Error > {
+
+pub async fn get_todos(
+    client: &Client
+) -> Result<Vec<TodoList>, io::Error > {
 
     let statement = client.prepare(
         "select * from todo_list order by id desc limit 10"
