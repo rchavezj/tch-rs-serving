@@ -1,6 +1,6 @@
 # Actix (Rust) + GraphQL = Juniper
 
-This project will contain a back end stack with rust web framework Actix for fast request performance. 
+This project will contain a back end stack with rust web framework Actix for fast request performance. Alongside Juniper, an integration of Rust with Graphql
 
 Remember to remove './todo-actix/target' folder before every git commit. </br>
 
