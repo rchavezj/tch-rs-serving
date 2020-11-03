@@ -74,8 +74,9 @@ pub async fn check_item(
     );
 
     //path.0 --> list id, path.1 --> item id
-    let result: Result<(), {unkown}> = db::check_item(&client, path.0, path.1).await;
-
+    // let result: Result<(), {unkown}> = db::check_item(&client, path.0, path.1).await;
+    let result = db::check_item(&client, path.0, path.1).await;
+    
     match result {
         Ok(()) => HttpResponse::Ok().json(ResultResponse{success: true}),
         Err(ref e) if e.kind() == Other => HttpResponse::Ok().json(ResultResponse{success: false}),
