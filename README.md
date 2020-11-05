@@ -16,7 +16,7 @@ psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 
 # Set of commands to setup server and retrieve data back to rust handler
 (0) cargo run </br>
-## Switch terminals
+### Switch terminals
 (1) sudo docker-compose up -d </br> 
 (2) sudo docker ps </br>
 (3) psql -h 127.0.0.1 -p 5432 -U actix actix </br>
@@ -90,4 +90,5 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 (6) curl localhost:8080/todos -v | jq . --> curl (52) Empty reply from server </br>
 ### Switch terminal tabs back to restart cargo run but with trace env variable (RUST_BACKREACE=1) 
 (7) RUST_BACKREACE=1 cargo run (Switch terminal tabs again) </br>
-(8) curl localhost:8080/todos -v | jq . --> Uglier stack trace </br>
+(8) curl localhost:8080/todos -v | jq . --> Uglier stack trace. Difficult finding the root to error.  </br>
+
