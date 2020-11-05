@@ -1,6 +1,6 @@
 # Actix (Rust) + GraphQL = Juniper
 
-This project will contain a back end stack with rust web framework Actix for fast request performance. 
+This project will contain a back end stack with rust web framework Actix for fast request performance. Alongside Juniper, an integration of Rust with GraphQL
 
 Remember to remove './todo-actix/target' folder before every git commit. </br>
 
@@ -90,5 +90,9 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 (6) curl localhost:8080/todos -v | jq . --> curl (52) Empty reply from server </br>
 ### Switch terminal tabs back to restart cargo run but with trace env variable (RUST_BACKREACE=1) 
 (7) RUST_BACKREACE=1 cargo run (Switch terminal tabs again) </br>
+<<<<<<< HEAD
 (8) curl localhost:8080/todos -v | jq . --> Uglier stack trace. Difficult finding the root to error.  </br>
 
+=======
+(8) curl localhost:8080/todos -v | jq . --> Uglier stack trace </br>
+>>>>>>> 3facf1b01b30c84ba8622facd0c4cc7528871c40
