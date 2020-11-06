@@ -53,7 +53,7 @@ impl ResponseError for AppError {
     fn status_code(&self) -> StatusCode {
         match self.error_type {
             AppErrorType::DbError => StatusCode::INTERNAL_SERVER_ERROR,
-            ApprErrorType::NotFoundError => StatusCode::NOT_FOUND
+            AppErrorType::NotFoundError => StatusCode::NOT_FOUND
         }
     }
 
