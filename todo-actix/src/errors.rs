@@ -2,25 +2,29 @@ use serde::Serialize;
 use actix_web::{error::ResponseError, http::StatusCode, HttpResponse};
 use std::fmt;
 
+
 #[derive(Debug)]
-pub enum ApprErrorType{
+pub enum AppErrorType{
     DbError,
     NotFoundError
 }
+
 
 #[derive(Debug)]
 pub struct AppError {
     pub message: Option<String>,
     pub cause: Option<String>,
-    pub error_type: ApprErrorType
+    pub error_type: AppErrorType
 }
 
+
 impl AppError {
-    fn message(&self) -> String {
-        match &*self {
+    
+    pub fn message(&self) -> String {
+        match &*self { 
             
             AppError {
-                message: Some(message: &String),
+                message: Some(message),
                 cause: _,
                 error_type: _
             } => message.clone(),
@@ -35,7 +39,16 @@ impl AppError {
             
         }
     }
+
+    pub fn db_error(error: impl ToString) -> AppError {
+        AppError { 
+            message: None, 
+            cause: Some(error.to_string()),
+            error_type: AppErrorType::DbError
+        }
+    }
 }
+
 
 impl fmt::Display for AppError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> Result<(), fmt::Error> {
@@ -43,10 +56,12 @@ impl fmt::Display for AppError {
     }
 }
 
+
 #[derive(Serialize)]
 pub struct AppErrorResponse {
     pub error: String
 }
+
 
 impl ResponseError for AppError {
    
@@ -58,7 +73,8 @@ impl ResponseError for AppError {
     }
 
     fn error_response(&self) -> HttpResponse {
-        HttpResponse::build(self, status_code())
+        HttpResponse::build(self.status_code())
             .json(AppErrorResponse{ error: self.message() })
     }
+
 }

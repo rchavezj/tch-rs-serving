@@ -2,6 +2,7 @@ mod config;
 mod models;
 mod handlers;
 mod db;
+mod errors;
 
 use actix_web::{web, App, HttpServer};
 use dotenv::dotenv;
@@ -34,4 +35,4 @@ async fn main() -> io::Result<()> {
     .run()
     .await
 }
- 
+  
