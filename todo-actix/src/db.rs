@@ -9,7 +9,9 @@ pub async fn get_todos(
 ) -> Result<Vec<TodoList>, AppError > {
 
     let statement = client
-        .prepare( "select * from todo_list order by id desc limit 10" )
+        .prepare( 
+            "select * from todo_list order by id desc limit 10" 
+        )
         .await
         .map_err( AppError::db_error )?;
 

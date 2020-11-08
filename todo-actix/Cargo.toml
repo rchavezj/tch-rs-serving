@@ -35,7 +35,7 @@ deadpool-postgres = "0.5.0"
 tokio-postgres = "0.5.1" 
 
 
-
+## Error Handlers
 slog = "2.5.2"
 slog-term = "2.5.0"
 slog-async = "2.4.0"

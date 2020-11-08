@@ -3,7 +3,7 @@ use deadpool_postgres::{Pool, Client};
 use actix_web::{web, Responder, HttpResponse};
 
 use crate::db;
-use crate::errors::{AppError};
+use crate::errors::AppError;
 use crate::models::{Status, CreateTodoList, ResultResponse};
 
 
