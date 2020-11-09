@@ -1,7 +1,6 @@
+use std::fmt;
 use serde::Serialize;
 use actix_web::{error::ResponseError, http::StatusCode, HttpResponse};
-use std::fmt;
-
 
 #[derive(Debug)]
 pub enum AppErrorType{
