@@ -31,7 +31,7 @@ impl Config {
     }
 
     pub fn configure_pool(&self) -> Pool {
-        self.pg.create_pool(NoTls).unwrap();
+        self.pg.create_pool(NoTls).unwrap()
     }
 
     pub fn configure_log() -> Logger {

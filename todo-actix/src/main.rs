@@ -83,7 +83,7 @@ mod integration_tests {
             .uri("/todos")
             .to_request();
 
-        let res = test::call_service(&mut, app, req).await;
+        let res = test::call_service(&mut app, req).await;
 
         assert_eq!(res.status(), 200, "GET /todos should return status 200");
     }
