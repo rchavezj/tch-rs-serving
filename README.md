@@ -2,6 +2,9 @@
 
 This project will contain a back end stack with rust web framework Actix for fast request performance. Alongside Juniper, an integration of Rust with GraphQL
 
+
+[![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
+
 Remember to remove './todo-actix/target' folder before every git commit. </br>
 
 # Docker commands
