@@ -4,6 +4,8 @@ This project will contain a back end stack with rust web framework Actix for fas
 
 
 [![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
+[![Latest version](https://img.shields.io/crates/v/Rust_GraphQL)](https://crates.io/crates/tch)
+![License](https://img.shields.io/crates/l/tch.svg)
 
 Remember to remove './todo-actix/target' folder before every git commit. </br>
 
