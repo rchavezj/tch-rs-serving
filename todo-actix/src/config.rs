@@ -5,6 +5,12 @@ use serde::Deserialize;
 // use slog_envlogger;
 // use slog_term;
 
+use slog_term;
+use slog_async;
+use slog::{Logger, Drain, o};
+use tokio_postgres::NoTls;
+use deadpool_postgres::Pool;
+
 #[derive(Deserialize)]
 pub struct ServerConfig {
     pub port: i32,
@@ -24,11 +30,17 @@ impl Config {
         cfg.try_into()
     }
 
-    // pub fn configure_log() -> Logger {
-    //     let decorator = slog_term::TermDecorator::new().build();
-    //     let console_drain = slog_term::FullFormat::new(decorator).build().fuse();
-    //     let console_drain = slog_envlogger::new(console_drain);
-    //     let console_drain = slog_async::Async::new(console_drain).build().fuse();
-    //     slog::Logger::root(console_drain, o!("v" => env!("CARGO_PKG_VERSION")))
-    // }
+    pub fn configure_pool(&self) -> Pool {
+        self.pg.create_pool(NoTls).unwrap();
+    }
+
+    pub fn configure_log() -> Logger {
+        // Terminal Output (Design pattern): Nice format for the logger
+        let decorator = slog_term::TermDecorator::new().build();
+        // Refers to the destination (output) for the log origin on bug. 
+        let console_drain = slog_term::FullFormat::new(decorator).build().fuse();
+        let console_drain = slog_async::Async::new(console_drain).build().fuse();
+        slog::Logger::root(console_drain, o!("v" => env!("CARGO_PKG_VERSION")))
+    }
+
 }
