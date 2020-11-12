@@ -59,3 +59,7 @@ async fn main() -> io::Result<()> {
     .await
 }
   
+#[cfg(test)]
+mod integration_tests {
+
+}
