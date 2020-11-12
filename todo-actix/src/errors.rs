@@ -77,3 +77,24 @@ impl ResponseError for AppError {
     }
 
 }
+
+
+#[cfg(test)]
+mod tests {
+
+    use super::{AppError, AppErrorType};
+
+    #[test]
+    fn test_default_message() {
+        let db_error = AppError {
+            message: None, 
+            cause: None,
+            error_type: AppErrorType::DbError
+        };
+        assert_eq!(
+            db_error.message(), 
+            "An unexpected error has occurred".to_string(),
+            "Default message should be shown"
+        )
+    }
+}
