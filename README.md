@@ -29,7 +29,7 @@ psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
     &nbsp;&nbsp;&nbsp; (3a List of relations)  \d  </br>
     &nbsp;&nbsp;&nbsp; (3b) select * from todo_item; </br>
     &nbsp;&nbsp;&nbsp; (3c) select * from todo_list; </br>
-![alt text](https://github.com/rchavezj/rust_graphql/blob/main/00_todo-actix/img/storedProcedureDisplay.png)
+![alt text](https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/storedProcedureDisplay.png)
 
 
 # If the user wishes to display the todos list
@@ -37,13 +37,13 @@ psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 curl http://localhost:8080/ </br>
 curl http://localhost:8080/todos </br>
 curl http://localhost:8080/todos | jq . </br>
-![alt text](https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/todoList.png)
+![alt text](https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/todoList.png)
 
 
 # If the user wishes to display the items 
 curl http://localhost:8080/todos/1/items </br>
 curl http://localhost:8080/todos/1/items -s | jq . </br>
-![alt text](https://github.com/rchavezj/rust_graphql/blob/main/00_todo-actix/img/todoItems.png)
+![alt text](https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/todoItems.png)
 
 # If the user wishes to create a new todo
 curl http://localhost:8080/todos </br>
@@ -51,7 +51,7 @@ curl http://localhost:8080/todos | jq . </br>
 curl -X POST -H "Content-Type: application/json" -d '{"title": "List 3"}' http://localhost:8080/todos </br>
 curl http://localhost:8080/todos </br>
 curl http://localhost:8080/todos | jq . </br>
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/00_todo-actix/img/POSTNewTodoList.png" width="820" height="500" /> 
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/POSTNewTodoList.png" width="820" height="500" /> 
 
 
 # Update content for put commands
@@ -60,7 +60,7 @@ curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success true) <
 curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
 curl -X PUT http://localhost:8080/todos/2/items/3 -s | jq . --> (Success false) </br>
 curl http://localhost:8080/todos/2/items -s | jq . </br>
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/00_todo-actix/img/putFunction.png" width="820" height="500" /> 
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/putFunction.png" width="820" height="500" /> 
 
 
 # Performance Tests (Local host)
@@ -75,14 +75,14 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 # Put the app into a container and limit the resources. 
 ### The idea is to simulate a small 'BM' in a cloud provider (Performance Test)
 (1) sudo docker-compose --compatibility up </br>
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/00_todo-actix/img/dockerComposeCompatibility.png"/>   </br>
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/dockerComposeCompatibility.png"/>   </br>
 (2) ab -n 100000 -k -c 30 -q http://localhost:8080/ </br>
 (3) ab -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
 (4) ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/ </br>
 (5) ab -p todo.json -T application/json -n 100000 -k -c 30 -q http://localhost:8080/todos </br>
 <img src="https://github.com/rchavezj/rust_graphql/blob/main/todo-actix/img/dockerReleasePt1.png" width="820" height="400" />  </br>
 
-<img src="https://github.com/rchavezj/rust_graphql/blob/main/00_todo-actix/img/dockerReleasePt2.png" width="820" height="400" />  </br>
+<img src="https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/dockerReleasePt2.png" width="820" height="400" />  </br>
 
 
 # Error handling and Logging (Create appropriate msg to user)
