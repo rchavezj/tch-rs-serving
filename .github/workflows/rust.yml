@@ -8,7 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  working-directory: ./todo-actix
+  working-directory: ./01_todo-actix
 
 jobs:
   build:
