@@ -19,6 +19,9 @@ sudo docker-compose up -d postgres </br>
 psql -h 127.0.0.1 -p 5432 -U actix actix </br>
 psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 
+# Series of commands to create the tables with Docker image
+sudo docker-compose up -d postgres </br>
+psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 
 # Set of commands to setup server and retrieve data back to rust handler
 (0) cargo run </br>
