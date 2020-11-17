@@ -54,27 +54,34 @@ mod integration_tests {
     
     use dotenv::dotenv;
     use actix_web::{App, web, test};
+    use lazy_static::lazy_static;
 
     use crate::handlers::*;
     use crate::config::Config;
     use crate::models::AppState;
 
+    lazy_static! {
+        static ref APP_STATE: AppState = {
+            dotenv().ok();
+
+            let config = Config::from_env().unwrap();
+
+            let pool = config.configure_pool();
+    
+            let log = Config::configure_log();
+
+            AppState {
+                pool: pool.clone(),
+                log: log.clone()
+            }
+        };
+    }
+
     #[actix_rt::test]
     async fn test_get_todos () {
 
-        dotenv().ok();
-
-        let config = Config::from_env().unwrap();
-
-        let pool = config.configure_pool();
-    
-        let log = Config::configure_log();
-
         let app = App::new()
-            .data(AppState {
-                pool: pool.clone(),
-                log: log.clone()
-            })
+            .data(APP_STATE.clone())
             .route("/todos{_:/?}", web::get().to(get_todos));
         
         let mut app = test::init_service(app).await;
@@ -86,5 +93,10 @@ mod integration_tests {
         let res = test::call_service(&mut app, req).await;
 
         assert_eq!(res.status(), 200, "GET /todos should return status 200");
+    }
+
+    #[actix_rt::test]
+    async fn test_create_todos() {
+        
     }
 }

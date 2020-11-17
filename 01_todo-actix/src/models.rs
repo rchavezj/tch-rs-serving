@@ -3,6 +3,7 @@ use tokio_pg_mapper_derive::PostgresMapper;
 use deadpool_postgres::Pool;
 use slog::Logger;
 
+#[derive(Clone)]
 pub struct AppState {
     pub pool: Pool,
     pub log: Logger
