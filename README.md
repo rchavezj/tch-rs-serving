@@ -23,6 +23,26 @@ psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 sudo docker-compose up -d postgres </br>
 psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 
+## Diesel commands for setting up diesel database (Make sure data is reseted inside psql: drop tables)
+psql -h 127.0.0.1 -p 5432 -U actix actix (Make sure tables are droped) </br>
+diesel setup </br>
+cat diesel.toml </br>
+diesel migration generate create_db </br>
+diesel migration run --database-url "postgres://actix:actix@localhost:5432/actix" --> (running again nothing happens)</br>
+diesel migration run --database-url "postgres://[username]:[password]@[host_name]:[port]/[database]"</br>
+diesel migration redo --database-url "postgres://actix:actix@localhost:5432/actix" </br>
+
+# Cargo package for migration 
+cargo install diesel_cli --no-default-features --features postgres </br>
+### If installtion failed, try the follow commands
+https://github.com/diesel-rs/diesel/issues/2026#issuecomment-505934091 </br>
+sudo dd if=/dev/zero of=/swapfile bs=1M count=2048 </br>
+sudo chmod 600 /swapfile </br>
+ls -l /swapfile </br>
+sudo mkswap /swapfile </br>
+sudo swapon /swapfile </br>
+swapon -s </br>
+
 # Set of commands to setup server and retrieve data back to rust handler
 (0) cargo run </br>
 ### Switch terminals
