@@ -15,6 +15,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    container:
+      image: rchavezj/todo-actix-cache
+
     services:
       postgres:
         image: postgres
@@ -31,11 +34,14 @@ jobs:
     - name: Install diesel_cli
       working-directory: ${{env.working-directory}}
       run: cargo install diesel_cli --no-default-features --features postgres
+    - name: Move cache
+      working-directory: ${{env.working-directory}}
+      run: mv /cache/target .
     - name: Run migrations
       working-directory: ${{env.working-directory}}
       run: diesel migration run
       env:
-        DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+        DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
     - name: Build
       working-directory: ${{env.working-directory}}
       run: cargo build --verbose

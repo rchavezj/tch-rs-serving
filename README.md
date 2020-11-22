@@ -15,6 +15,12 @@ sudo docker ps </br>
 sudo docker-compose stop </br>
 sudo docker-compose up -d postgres </br>
 
+# Docker push image (set repo private on docker hub)
+sudo docker login docker.io </br>
+sudo docker push rchavezj/todo-actix-cache:latest </br>
+sudo docker push username/reponame </br>
+
+
 # PSQL Commands
 psql -h 127.0.0.1 -p 5432 -U actix actix </br>
 psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
