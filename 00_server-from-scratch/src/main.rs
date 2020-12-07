@@ -7,15 +7,16 @@ struct Server {
 impl Server {
     fn new(addr: String) -> Self { Self { addr } }
 
-    // fn run (&self) {
-
-    // }
+    fn run (&mut self) {
+        
+    }
 }
 
 
 // &self --> a string slice is an immutable reference to a part of a string. 
 // 
 fn main() {
+    let foodieString = String::from("🍔🍟🍻🍻");
     let string = String::from("127.0.0.1:8080");
     let string_slice = &string[10..];
     let string_borrow: &str = &string;
