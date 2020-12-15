@@ -13,19 +13,12 @@ impl Server {
 
         loop {
             match listener.accept() {
-                Ok() => {
+                Ok((stream, addr)) => {
                     let a = 5;
                     println!("OK");
                 },
-                Err() => println!("Err")
+                Err(e) => println!("Failed to establish a connection: {}", e),
             }
-            let res = listener.accept();
-
-            if res.is_err(){
-                continue;
-            }
-
-            let (stream, addr) = res.unwrap();
         }
     }
 }
