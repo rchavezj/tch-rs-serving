@@ -1,3 +1,5 @@
+use std::str::FromStr;
+
 pub enum Method {
     GET,
     DELETE,
