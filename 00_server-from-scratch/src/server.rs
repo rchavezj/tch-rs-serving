@@ -27,8 +27,8 @@ impl Server {
                                 String::from_utf8_lossy(&buffer)
                             );
                             match Request::try_from(&buffer[..]) {
-                                Ok (request) => {}
-                                Err(e) => println!("Failed to parse a request: {}", e);
+                                Ok (request) => {},
+                                Err(e) => println!("Failed to parse a request: {}", e)
                             }
                             let res: &Result<Request, _> = &buffer[..].try_into();
 
