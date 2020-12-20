@@ -16,22 +16,44 @@ pub struct Request {
 }
 
 
-impl Request {
-    fn from_byte_array(buf -> &[u8]) -> Result <Self, String> { }
-}
+// impl Request {
+//     fn from_byte_array(buf -> &[u8]) -> Result <Self, String> { }
+// }
 
 
 impl TryFrom<&[u8]> for Request {
-    
     type Error = ParseError;
-
+    
     // Get /search?name=abc&sort=1 HTTP/1.1
     fn try_from(buf: &[u8]) -> Result<Self, Self::Error>{
-        let string = String::from("asd");
-        string.encrypt(); 
-        buf.encrypt();
+        let request = str::from_utf8(buf)?;
+        let (method, request) = get_next_word(request).ok_or(ParseError::InvalidRequest)?;
+        let (path, request) = get_next_word(request).ok_or(ParseError::InvalidRequest)?;
+        let (protocol, _) = get_next_word(request).ok_or(ParseError::InvalidRequest)?;
+
+        if protocol != "HTTP/1.1" {
+            return Err(ParseError::InvalidProtocol)
+        }
+        
         unimplemented!()
     }
+}
+
+
+fn get_next_word(request: &str) -> Option<(&str, &str)> {
+    let mut iter = request.chars();
+
+    // enumerate gives users to also' 
+    // get current index when looping
+    for (i, c) in request.chars().enumerate() {
+        if c == ' ' || c == '\r' {
+            return Some((
+                &request[..i], 
+                &request[i + 1..]
+            ));
+        }
+    }
+    None
 }
 
 
@@ -52,6 +74,11 @@ impl ParseError {
             Self::InvalidMethod => "Invalid InvalidMethod"
         }
     }
+}
+
+
+impl From<Utf8Error> for ParseError {
+
 }
 
 
