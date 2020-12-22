@@ -7,21 +7,20 @@ use std::fmt::{
     Formatter, 
     Result as FmtResult
 };
+use std::str;
+use std::str::Utf8Error;
 
 
-pub struct Request {
-    path: String,
+
+
+pub struct Request<'buf> {
+    path: &'buf str,
     method: Method,
-    query_string: Option<String>,
+    query_string: Option<&'buf str>,
 }
 
 
-// impl Request {
-//     fn from_byte_array(buf -> &[u8]) -> Result <Self, String> { }
-// }
-
-
-impl TryFrom<&[u8]> for Request {
+impl<'buf> TryFrom<&[u8]> for Request<'buf> {
     type Error = ParseError;
     
     // Get /search?name=abc&sort=1 HTTP/1.1
@@ -39,12 +38,16 @@ impl TryFrom<&[u8]> for Request {
         let method: Method = method.parse()?;
 
         let mut query_string = None;
-        if let Some(i) == path.find('?') {
+        if let Some(i) = path.find('?') {
             query_string = Some(&path[i + 1..]);    // +1 byte
             path = &path[..i];
         }
         
-        unimplemented!()
+        Ok(Self {
+            path: path.to_string(),
+            method: method,
+            query_string: query_string.to_string(),
+        })
     }
 }
 
@@ -58,7 +61,7 @@ fn get_next_word(request: &str) -> Option<(&str, &str)> {
         if c == ' ' || c == '\r' {
             return Some((
                 &request[..i], 
-                &request[i + 1..]
+                &request[i+1..]
             ));
         }
     }
@@ -87,7 +90,9 @@ impl ParseError {
 
 
 impl From<Utf8Error> for ParseError {
-
+    fn from(_: Utf8Error) -> Self {
+        Self::InvalidEncoding
+    }
 }
 
 
