@@ -1,6 +1,6 @@
 # Actix (Rust) + GraphQL = Juniper
 
-This project will contain a back end stack with rust web framework Actix for fast request performance. Alongside Juniper, an integration of Rust with GraphQL
+This project will contain a back end stack with rust web framework Actix for fast request performance. Alongside Juniper, an integration of Rust with GraphQL. And potentially an example of binding PyTorch ML models (torchscript) from C++ (Libtorch) to Rust (tch-rs). 
 
 
 [![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
