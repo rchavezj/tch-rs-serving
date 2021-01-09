@@ -1,7 +1,7 @@
 use std::error::Error;
 use std::convert::TryFrom;
 use super::method::{Method, MethodError};
-use super::QueryString;
+use super::{QueryString, QueryStringValue};
 use std::fmt::{ 
     Debug,
     Display,
