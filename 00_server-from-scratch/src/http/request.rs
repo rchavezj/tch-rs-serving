@@ -1,7 +1,7 @@
 use std::error::Error;
 use std::convert::TryFrom;
 use super::method::{Method, MethodError};
-use super::{QueryString, QueryStringValue};
+use super::QueryString;
 use std::fmt::{ 
     Debug,
     Display,
@@ -12,12 +12,11 @@ use std::str;
 use std::str::Utf8Error;
 
 
-
-
+#[derive(Debug)]
 pub struct Request<'buf> {
     method: Method,
     path: &'buf str,
-    query_string: Option<&'buf str>,
+    query_string: Option<QueryString<'buf>>,
 }
 
 
@@ -41,7 +40,7 @@ impl<'buf> TryFrom<&'buf [u8]> for Request<'buf> {
 
         let mut query_string = None;
         if let Some(i) = path.find('?') {
-            query_string = Some( &path[i + 1..] );    // +1 byte
+            query_string = Some(QueryString::from(&path[i + 1..]));    // +1 byte
             path = &path[..i];
         }
         
@@ -55,7 +54,6 @@ impl<'buf> TryFrom<&'buf [u8]> for Request<'buf> {
 
 
 fn get_next_word(request: &str) -> Option<(&str, &str)> {
-    let mut iter = request.chars();
     // enumerate gives users to also' 
     // get current index when looping
     for (i, c) in request.chars().enumerate() {
