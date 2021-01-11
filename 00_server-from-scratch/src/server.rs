@@ -1,7 +1,7 @@
 use std::io::{Read};
 use std::convert::TryFrom;
 // use std::convert::TryInto;
-use crate::http::{Request, Response, StatusCode};
+use crate::http::{Request, Response, StatusCode, ParseError};
 use std::net::TcpListener;
 
 
@@ -14,13 +14,10 @@ pub trait Handler {
 }
 
 
-pub struct Server {
-    addr: String,
-}
+pub struct Server { addr: String }
 
 
 impl Server {    
-    
     pub fn new(addr: String) -> Self { Self { addr } }
 
     pub fn run (self, mut handler: impl Handler) { 
