@@ -1,9 +1,15 @@
 pub use config::ConfigError;
 use serde::Deserialize;
-use slog::{o, Drain, Logger};
-use slog_async;
+// use slog::{o, Drain, Logger};
+// use slog_async;
 use slog_envlogger;
+// use slog_term;
+
 use slog_term;
+use slog_async;
+use slog::{Logger, Drain, o};
+use tokio_postgres::NoTls;
+use deadpool_postgres::Pool;
 
 #[derive(Deserialize)]
 pub struct ServerConfig {
@@ -25,9 +31,9 @@ impl Config {
         cfg.try_into()
     }
 
-    // pub fn configure_pool(&self) -> Pool {
-    //     self.pg.create_pool(NoTls).unwrap()
-    // }
+    pub fn configure_pool(&self) -> Pool {
+        self.pg.create_pool(NoTls).unwrap()
+    }
 
     pub fn configure_log() -> Logger {
         // // Terminal Output (Design pattern): Nice format for the logger
