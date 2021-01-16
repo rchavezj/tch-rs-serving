@@ -17,7 +17,7 @@ use crate::models::AppState;
 
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
-    
+
     dotenv().ok();
 
     let config = Config::from_env().unwrap();
@@ -49,7 +49,7 @@ async fn main() -> io::Result<()> {
     .await
 }
   
-// #[cfg(test)]
+#[cfg(test)]
 mod integration_tests {
     
     use dotenv::dotenv;
