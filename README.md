@@ -2,9 +2,10 @@
 
 This project will contain a back end stack with rust web framework Actix for fast API. Alongside Juniper, an integration of Rust w/ GraphQL. And Rust bindings (tch-rs) for the C++ API of PyTorch (Libtorch) using Torchscript. 
 
-Online courses referenced to help build this repo: </br>
-[(Rust fundamentals)](https://www.udemy.com/course/rust-fundamentals/) </br>
-[(Genus-v Programming)](https://www.youtube.com/playlist?list=PLECOtlti4Psr4hXVX5GuSvLKp0-RZjz93) </br>
+Online resources for 00-02 Sections </br>
+[Tokio.rs](https://tokio.rs/)
+[Rust fundamentals](https://www.udemy.com/course/rust-fundamentals/) </br>
+[Genus-v Programming](https://www.youtube.com/playlist?list=PLECOtlti4Psr4hXVX5GuSvLKp0-RZjz93) </br>
 
 I wish to build up my knowledge from the courses referenced to setup a machine learning rust ecosystem
 
