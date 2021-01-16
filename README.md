@@ -16,5 +16,5 @@ I wish to build up my knowledge from the courses referenced to setup a machine l
 # Contents: 
 |                        |                                          |
 | ---------------------- | ---------------------------------------- |
-| 1. [Server From Scratch](#Server-from-Scratch)             |  2. [Todo-Actix](#Linked-List) |
-| 3. [Actix with Juniper](#Stack-and-Queues)               |  4. [Libtorch with Rust](#Trees-and-Graph)|
+| 1. [Server From Scratch](#Server-from-Scratch)             |  2. [Todo-Actix](#Todo-Actix) |
+| 3. [Actix with Juniper](#Actix-with-Juniper)               |  4. [Libtorch with Rust](#Libtorch-with-Rust)|
