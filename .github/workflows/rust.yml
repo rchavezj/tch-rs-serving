@@ -31,11 +31,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Login to GitHub Docker Registry
-      run: docker login docker.pkg.github.com --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
-      env:
-        DOCKER_USERNAME: ${{ secrets.GITHUB_DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.GITHUB_DOCKER_PASSWORD }}
+    
     - name: Install diesel_cli
       working-directory: ${{env.working-directory}}
       run: cargo install diesel_cli --no-default-features --features postgres
