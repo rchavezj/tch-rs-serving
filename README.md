@@ -1,4 +1,4 @@
-# Actix (Rust) + GraphQL = Juniper
+# Actix (Rust) + Juniper (GraphQL + Rust) + tch-rs (Libtorch C++ Rust Bindings)
 
 This project will contain a back end stack with rust web framework Actix for fast API. Alongside Juniper, an integration of Rust w/ GraphQL. And Rust bindings (tch-rs) for the C++ API of PyTorch (Libtorch) using Torchscript. 
 
