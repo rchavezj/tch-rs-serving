@@ -78,7 +78,7 @@ mod integration_tests {
         };
     }
 
-    // #[actix_rt::test]
+    #[actix_rt::test]
     async fn test_get_todos () {
 
         let app = App::new()
@@ -96,7 +96,7 @@ mod integration_tests {
         assert_eq!(res.status(), 200, "GET /todos should return status 200");
     }
 
-    // #[actix_rt::test]
+    #[actix_rt::test]
     async fn test_create_todos() {
         
         let app = App::new()
