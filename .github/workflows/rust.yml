@@ -30,13 +30,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     
+
     - name: Install diesel_cli
       working-directory: ${{env.working-directory}}
       run: cargo install diesel_cli --no-default-features --features postgres
-    - name: Move cache
-      working-directory: ${{env.working-directory}}
-      run: mv /cache/target .
+    
     - name: Run migrations
       working-directory: ${{env.working-directory}}
       run: diesel migration run
