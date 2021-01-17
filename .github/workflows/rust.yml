@@ -15,8 +15,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    container:
-      image: rchavezj/todo-actix-cache
+    
 
     services:
       postgres:
