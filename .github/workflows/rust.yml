@@ -15,7 +15,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    
+    container:
+      image: rchavezj/todo-actix-cache
 
     services:
       postgres:
@@ -28,29 +29,28 @@ jobs:
         - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
+
     steps:
     - uses: actions/checkout@v2
 
-    
-
-    - name: Install diesel_cli
+    - name: Move cache
       working-directory: ${{env.working-directory}}
-      run: cargo install diesel_cli --no-default-features --features postgres
-    
-      env:
-        DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+      run: mv /cache/target .
     
     - name: Run migrations
       working-directory: ${{env.working-directory}}
       run: diesel migration run 
       env:
-        DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+        DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+
     - name: Build
       working-directory: ${{env.working-directory}}
       run: cargo build --verbose
+
     - name: Copy .env file
       working-directory: ${{env.working-directory}}
       run: cp .env.github .env
+
     - name: Run tests
       working-directory: ${{env.working-directory}}
       run: cargo test --verbose
