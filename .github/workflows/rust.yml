@@ -42,6 +42,10 @@ jobs:
     - name: Build
       working-directory: ${{env.working-directory}}
       run: cargo build --verbose
+    - name: Run migrations
+      run: diesel migration run 
+      env:
+        DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
     - name: Copy .env file
       working-directory: ${{env.working-directory}}
       run: cp .env.github .env

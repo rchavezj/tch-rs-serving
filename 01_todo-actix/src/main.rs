@@ -79,7 +79,7 @@ mod integration_tests {
     }
 
     #[actix_rt::test]
-    async fn test_get_todos () {
+    async fn test_get_todos() {
 
         let app = App::new()
             .data(APP_STATE.clone())
