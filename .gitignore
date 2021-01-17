@@ -1,6 +1,6 @@
 /00_server-from-scratch/target
 
 /01_todo-actix/target
-/01_todo-actix/.env
+# /01_todo-actix/.env
 
 /02_blog_juniper/target
