@@ -8,7 +8,7 @@ edition = "2018"
 default = []
 
 # Integration tests
-integration = []
+integration_tests = []
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
