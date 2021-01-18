@@ -39,6 +39,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
     - name: Build the Docker image
+      working-directory: ${{env.working-directory}}
       run: docker build . --file Dockerfile rchavezj/todo-actix-cache
 
     - name: Move cache
