@@ -41,6 +41,7 @@ sudo mkswap /swapfile </br>
 sudo swapon /swapfile </br>
 swapon -s </br>
 
+
 # Set of commands to setup server and retrieve data back to rust handler
 (0) cargo run </br>
 ### Switch terminals
@@ -53,7 +54,7 @@ swapon -s </br>
 ![alt text](https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/storedProcedureDisplay.png)
 
 
-# If the user wishes to display the todos list
+# Display the todos list
 ### curl commandds when program (server) is running (cargo run)
 curl http://localhost:8080/ </br>
 curl http://localhost:8080/todos </br>
@@ -61,12 +62,12 @@ curl http://localhost:8080/todos | jq . </br>
 ![alt text](https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/todoList.png)
 
 
-# If the user wishes to display the items 
+# Display the items 
 curl http://localhost:8080/todos/1/items </br>
 curl http://localhost:8080/todos/1/items -s | jq . </br>
 ![alt text](https://github.com/rchavezj/rust_graphql/blob/main/01_todo-actix/img/todoItems.png)
 
-# If the user wishes to create a new todo
+# Create a new todo
 curl http://localhost:8080/todos </br>
 curl http://localhost:8080/todos | jq . </br>
 curl -X POST -H "Content-Type: application/json" -d '{"title": "List 3"}' http://localhost:8080/todos </br>
