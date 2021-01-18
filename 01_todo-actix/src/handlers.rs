@@ -52,22 +52,6 @@ pub async fn get_todos(
 }
 
 
-pub async fn get_items(
-    state: web::Data<AppState>, 
-    path: web::Path<(i32,)>
-) -> Result<impl Responder, AppError>{
-
-    let log = state.log.new(o!("handler" => "get_items" ));
-
-    let client: Client = get_client(state.pool.clone(), log.clone()).await?;
-
-    let result = db::get_items(&client, path.0).await;
-
-    result.map(|items| HttpResponse::Ok().json(items))
-        .map_err(log_error(log))
-}
-
-
 pub async fn create_todo(
     state: web::Data<AppState>, 
     json: web::Json<CreateTodoList>
@@ -80,6 +64,22 @@ pub async fn create_todo(
     let result = db::create_todo(&client, json.title.clone()).await;
 
     result.map(|todo| HttpResponse::Ok().json(todo))
+        .map_err(log_error(log))
+}
+
+
+pub async fn get_items(
+    state: web::Data<AppState>, 
+    path: web::Path<(i32,)>
+) -> Result<impl Responder, AppError>{
+
+    let log = state.log.new(o!("handler" => "get_items" ));
+
+    let client: Client = get_client(state.pool.clone(), log.clone()).await?;
+
+    let result = db::get_items(&client, path.0).await;
+
+    result.map(|items| HttpResponse::Ok().json(items))
         .map_err(log_error(log))
 }
 
