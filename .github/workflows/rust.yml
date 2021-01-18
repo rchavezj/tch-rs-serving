@@ -39,9 +39,9 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     
     - name: Push to Docker Hub
-      uses: docker/build-push-action@v1
+      uses: docker/build-push-action@v2
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
+        username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: rchavezj/todo-actix-cache
         tag_with_ref: true
