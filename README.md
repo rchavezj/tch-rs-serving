@@ -15,6 +15,10 @@ I wish to build up my knowledge from the sources referenced to setup a Machine L
 [![Latest version](https://img.shields.io/crates/v/Rust_GraphQL)](https://crates.io/crates/tch)
 ![License](https://img.shields.io/crates/l/tch.svg)
 
+|  CI / branch  |      master      |  develop |
+|----------|:-------------:|------:|
+| GitHub Actions |  [![Build Status master]][Build Link master] | [![Build Status develop]][Build Link develop] |
+
 # Contents: 
 |                        |                                          |
 | ---------------------- | ---------------------------------------- |
