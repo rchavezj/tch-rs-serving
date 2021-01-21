@@ -1,4 +1,4 @@
-# Actix (Rust)
+# Actix (Rust Web Framework )
 # + Juniper (GraphQL + Rust)
 # + tch-rs (PyTorch C++ API Rust Bindings)
 
