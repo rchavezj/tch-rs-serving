@@ -23,6 +23,22 @@ table! {
 }
 
 table! {
+    todo_item (id) {
+        id -> Int4,
+        title -> Varchar,
+        checked -> Bool,
+        list_id -> Int4,
+    }
+}
+
+table! {
+    todo_list (id) {
+        id -> Int4,
+        title -> Varchar,
+    }
+}
+
+table! {
     users (id) {
         id -> Uuid,
         username -> Varchar,
@@ -38,9 +54,12 @@ table! {
 joinable!(comments -> posts (post_id));
 joinable!(comments -> users (author_id));
 joinable!(posts -> users (author_id));
+joinable!(todo_item -> todo_list (list_id));
 
 allow_tables_to_appear_in_same_query!(
     comments,
     posts,
+    todo_item,
+    todo_list,
     users,
 );
