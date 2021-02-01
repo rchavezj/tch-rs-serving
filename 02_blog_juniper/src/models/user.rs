@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use tokio_pg_mapper_derive::PostgresMapper;
 use juniper::{GraphQLObject, GraphQLInputObject};
+use argonautica::Hasher;
+use futures::compat::Future01CompatExt;
 
 #[derive(Clone, Serialize, Deserialize, PostgresMapper, GraphQLObject)]
 #[pg_mapper(table = "users")]
@@ -29,4 +31,16 @@ pub struct CreateUser{
     pub password: String,
     pub bio: Option<String>,
     pub image: Option<String>
+}
+
+impl CreateUser{
+    pub async fn password_hash(&self) -> String {
+        Hasher::default()
+            .with_password(self.password)
+            .with_secret_key("my-secret-key-to-change-in-prod")
+            .hash_non_blocking()
+            .compat()
+            .await
+            .unwrap()
+    } 
 }

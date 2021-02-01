@@ -21,7 +21,7 @@ pub struct Query {}
     Context = Context,
 )]
 impl Query {
-    pub async fn apiVersion() -> &str {
+    pub async fn api_version() -> &str {
         "1.0"
     }
 
@@ -57,6 +57,7 @@ impl Query {
 
 pub struct Mutation {} 
 
+
 #[juniper::graphql_object]
 impl Mutation {
     async fn create_user(input: CreateUser, context: &Context) -> Result<User, FieldError> {
@@ -67,6 +68,11 @@ impl Mutation {
                 error!("Error getting client {}", err; "query" => "create_user");
                 err
             })?;
+            
+        let state = client
+            .prepare(query: "insert into users (username, email, password, bio, image) values($1, $2, $3, $4, $5) returning *").await?;
+            
+        
     }
 }
 
