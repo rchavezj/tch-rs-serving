@@ -68,11 +68,19 @@ impl Mutation {
                 error!("Error getting client {}", err; "query" => "create_user");
                 err
             })?;
+
+        let statement = client
+            .prepare(query: "insert into users (username, email, password, bio, image) values($1, $2, $3, $4, $5) returning *")
+            .await?;
             
-        let state = client
-            .prepare(query: "insert into users (username, email, password, bio, image) values($1, $2, $3, $4, $5) returning *").await?;
-            
-        
+        let user = client
+            .query(&statement, &[
+                &input.username,
+                &input.email,
+                &input.password_hash(),
+                &input.bio,
+                &input.image
+            ] )
     }
 }
 
