@@ -72,15 +72,25 @@ impl Mutation {
         let statement = client
             .prepare(query: "insert into users (username, email, password, bio, image) values($1, $2, $3, $4, $5) returning *")
             .await?;
+
+        let password_hash = input.password_hash().await;
             
         let user = client
             .query(&statement, &[
                 &input.username,
                 &input.email,
-                &input.password_hash(),
+                &password_hash,
                 &input.bio,
                 &input.image
-            ] )
+            ])
+            await?
+            .iter()
+            .map(|row| User::from_now_ref(row))
+            .collect::<Result<Vec<User>, _>>()?
+            .pop()
+            .unwrap();
+        
+        Ok(user)
     }
 }
 

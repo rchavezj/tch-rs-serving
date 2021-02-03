@@ -36,7 +36,7 @@ pub struct CreateUser{
 impl CreateUser{
     pub async fn password_hash(&self) -> String {
         Hasher::default()
-            .with_password(self.password)
+            .with_password(&self.password)
             .with_secret_key("my-secret-key-to-change-in-prod")
             .hash_non_blocking()
             .compat()
