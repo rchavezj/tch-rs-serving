@@ -83,7 +83,7 @@ impl Mutation {
                 &input.bio,
                 &input.image
             ])
-            await?
+            .await?
             .iter()
             .map(|row| User::from_now_ref(row))
             .collect::<Result<Vec<User>, _>>()?
