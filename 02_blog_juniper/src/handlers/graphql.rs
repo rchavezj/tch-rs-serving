@@ -58,7 +58,9 @@ impl Query {
 pub struct Mutation {} 
 
 
-#[juniper::graphql_object]
+#[juniper::graphql_object(
+    Context = Context,
+)]
 impl Mutation {
     async fn create_user(input: CreateUser, context: &Context) -> Result<User, FieldError> {
         let client: Client = context.pool
@@ -70,11 +72,11 @@ impl Mutation {
             })?;
 
         let statement = client
-            .prepare(query: "insert into users (username, email, password, bio, image) values($1, $2, $3, $4, $5) returning *")
+            .prepare("insert into users (username, email, password, bio, image) values($1, $2, $3, $4, $5) returning *")
             .await?;
 
         let password_hash = input.password_hash().await;
-            
+
         let user = client
             .query(&statement, &[
                 &input.username,
@@ -85,7 +87,7 @@ impl Mutation {
             ])
             .await?
             .iter()
-            .map(|row| User::from_now_ref(row))
+            .map(|row| User::from_row_ref(row))
             .collect::<Result<Vec<User>, _>>()?
             .pop()
             .unwrap();
