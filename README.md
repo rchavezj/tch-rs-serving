@@ -9,7 +9,10 @@ Full credit for sections 00-02 </br>
 [Rust fundamentals](https://www.udemy.com/course/rust-fundamentals/) </br>
 [Genus-v Programming](https://www.youtube.com/playlist?list=PLECOtlti4Psr4hXVX5GuSvLKp0-RZjz93) </br>
 
-I wish to build up my knowledge from the sources referenced to setup a Machine Learning Rust ecosystem into production
+I wish to build up my knowledge from the sources referenced to setup a Machine Learning Rust ecosystem into production. <br>
+
+# Why machine learning for Rust?
+https://www.lpalmieri.com/posts/2019-12-01-taking-ml-to-production-with-rust-a-25x-speedup/
 
 [![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
 [![Latest version](https://img.shields.io/crates/v/Rust_GraphQL)](https://crates.io/crates/tch)
