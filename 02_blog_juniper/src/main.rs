@@ -5,9 +5,11 @@ mod models;
 
 use crate::config::Config;
 use crate::handlers::app_config;
+
+use slog_scope::info;
 use actix_cors::Cors;
 use actix_web::{http::header, http::Method, middleware, App, HttpServer};
-use slog_scope::info;
+
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
@@ -30,7 +32,7 @@ async fn main() -> std::io::Result<()> {
             .allowed_header(header::CONTENT_TYPE)
             .supports_credentials()
             .finish();
-
+            
         App::new()
             .wrap(cors)
             .wrap(middleware::Logger::default())

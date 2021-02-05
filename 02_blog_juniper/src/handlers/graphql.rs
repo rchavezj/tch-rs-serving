@@ -1,10 +1,10 @@
+use crate::models::user::{User, CreateUser};
+use std::sync::Arc;
+use slog_scope::error;
 use deadpool_postgres::Pool;
-use juniper::{EmptyMutation, FieldError, RootNode};
 use deadpool_postgres::Client;
 use tokio_pg_mapper::FromTokioPostgresRow;
-use std::sync::Arc;
-use crate::models::user::{User, CreateUser};
-use slog_scope::error;
+use juniper::{EmptyMutation, FieldError, RootNode};
 
 #[derive(Clone)]
 pub struct Context {
@@ -98,8 +98,8 @@ impl Mutation {
 
 
 
-pub type Schema = RootNode<'static, Query, EmptyMutation<Context>>;
+pub type Schema = RootNode<'static, Query, Mutation>;
 
 pub fn create_schema() -> Schema {
-    Schema::new(Query {}, EmptyMutation::<Context>::new())
+    Schema::new(Query {}, Mutation{})
 }
