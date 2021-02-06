@@ -100,7 +100,7 @@ impl Mutation {
                     },
                     _ => AppError::from(err)
                 }
-            })?
+            })
             .iter()
             .map(|row| User::from_row_ref(row))
             .collect::<Result<Vec<User>, _>>()?
