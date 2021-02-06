@@ -1,4 +1,4 @@
-// use crate::errors::AppError;
+use crate::errors::AppError;
 use crate::models::user::{User, CreateUser};
 use std::sync::Arc;
 use slog_scope::error;
@@ -105,7 +105,7 @@ impl Mutation {
             .map(|row| User::from_row_ref(row))
             .collect::<Result<Vec<User>, _>>()?
             .pop()
-            .ok_or(err: AppError {
+            .ok_or(Err {
                 message: Some("Error creating User.".to_string()),
                 cause: None,
                 error_type: AppErrorType::DbError
