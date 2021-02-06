@@ -1,12 +1,21 @@
 use std::fmt;
 use serde::Serialize;
+use tokio_pg_mapper;
+use tokio_postgres::error::Error;
+use deadpool_postgres::PoolError;
+use juniper::{IntoFieldError, FieldError, Value};
 use actix_web::{error::ResponseError, http::StatusCode, HttpResponse};
+
+
 
 #[derive(Debug)]
 pub enum AppErrorType{
     DbError,
-    NotFoundError
+    #[allow(dead_code)]
+    NotFoundError,
+    InvalidField
 }
+
 
 
 #[derive(Debug)]
@@ -17,28 +26,25 @@ pub struct AppError {
 }
 
 
+
 impl AppError {
-    
     pub fn message(&self) -> String {
         match &*self { 
-            
             AppError {
                 message: Some(message),
-                cause: _,
-                error_type: _
+                ..
             } => message.clone(),
-
             AppError {
-                message: None,
-                cause: _,
-                error_type: AppErrorType::NotFoundError
+                error_type: AppErrorType::NotFoundError,
+                ..
             } => "The requested item was not found".to_string(),
-            
+            AppError {
+                error_type: AppErrorType::InvalidField,
+                ..
+            } => "Invalid field value provided".to_string(),
             _ => "An unexpected error has occurred".to_string()
-            
         }
     }
-
     pub fn db_error(error: impl ToString) -> AppError {
         AppError { 
             message: None, 
@@ -49,40 +55,101 @@ impl AppError {
 }
 
 
-impl fmt::Display for AppError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> Result<(), fmt::Error> {
-        write!(f, "{:?}", self)
+impl IntoFieldError for AppError {
+    fn into_field_error(self) -> FieldError {
+        FieldError::new(e: self.message(), extentions: Value::null())
     }
 }
 
 
-#[derive(Serialize)]
-pub struct AppErrorResponse {
-    pub error: String
-}
-
-
-impl ResponseError for AppError {
-   
-    fn status_code(&self) -> StatusCode {
-        match self.error_type {
-            AppErrorType::DbError => StatusCode::INTERNAL_SERVER_ERROR,
-            AppErrorType::NotFoundError => StatusCode::NOT_FOUND
+impl From<PoolError> for AppError {
+    fn from(error: PoolError) -> AppError {
+        AppError {
+            message: None,
+            cause: Some(error.to_string()),
+            error_type: AppErrorType::DbError,
         }
     }
-
-    fn error_response(&self) -> HttpResponse {
-        HttpResponse::build(self.status_code())
-            .json(AppErrorResponse{ error: self.message() })
-    }
-
 }
+
+impl From<Error> for AppError {
+    fn from(error: Error) -> AppError{
+        AppError {
+            message: None,
+            cause: Some(error.to_string()),
+            error_type: AppErrorType::DbError,
+        }
+    }
+}
+
+impl From<tokio_pg_mapper::Error> for AppError {
+    fn from(error: tokio_pg_mapper::Error) -> AppError {
+        AppError {
+            message: None,
+            cause: Some(error.to_string()),
+            error_type: AppErrorType::DbError,
+        }
+    }
+}
+
+
+
+impl fmt::Display for AppError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> Result<(), fmt::Error> {
+        write!(f, "{:?}", self.message())
+    }
+}
+
 
 
 #[cfg(test)]
 mod tests {
-
+    
     use super::{AppError, AppErrorType};
+
+    #[test]
+    fn test_default_db_error() {
+        let db_error: AppError {
+            message: None,
+            cause: None,
+            error_type: AppErrorType::DbError,
+        };
+        assert_eq! (
+            db_error.message(),
+            "Am unexpected error has occurred".to_string(),
+            "Default message should be shown"
+        );
+    }
+
+    #[test]
+    fn test_default_not_found_error() {
+        let db_error = AppError {
+            message: None,
+            cause: None,
+            error_type: AppErrorType::NotFoundError,
+        };
+        assert_eq!(
+            db_error.message(),
+            "The requested item was not found".to_string(),
+            "Default message should be shown"
+        );
+    }
+
+    #[test]
+    fn test_user_db_error() {
+        let user_message = "User-facing message".to_string();
+        let db_error = AppError {
+            message: Some(user_message.clone()),
+            cause: None,
+            error_type: AppErrorType::DbError,
+        };
+        assert_eq!(
+            db_error.message(),
+            user_message,
+            "User-facing message should be shown"
+        );
+    }
+
 
     #[test]
     fn test_default_message() {
@@ -97,7 +164,6 @@ mod tests {
             "Default message should be shown"
         )
     }
-
     #[test]
     fn custom_message() {
         let custom_message = "Unable to create item".to_string();
@@ -112,6 +178,4 @@ mod tests {
             "User-facing message should be shown"
         )
     }
-
-
 }
