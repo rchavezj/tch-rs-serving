@@ -1,13 +1,13 @@
 /// User model
 /// Includes login and profile info
-
+use uuid::Uuid;
+use argonautica::Hasher;
 use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
-use uuid::Uuid;
+use futures::compat::Future01CompatExt;
 use tokio_pg_mapper_derive::PostgresMapper;
 use juniper::{GraphQLObject, GraphQLInputObject};
-use argonautica::Hasher;
-use futures::compat::Future01CompatExt;
+
 
 #[derive(Clone, Serialize, Deserialize, PostgresMapper, GraphQLObject)]
 #[pg_mapper(table = "users")]

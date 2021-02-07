@@ -1,15 +1,18 @@
-use actix_web::{error::ResponseError, http::StatusCode, HttpResponse};
-use deadpool_postgres::PoolError;
-use serde::Serialize;
 use std::fmt;
-use tokio_postgres::error::Error;
 use tokio_pg_mapper;
+use serde::Serialize;
+use tokio_postgres::error::Error;
+use deadpool_postgres::PoolError;
+use juniper::{IntoFieldError, FieldError, Value};
+use actix_web::{error::ResponseError, http::StatusCode, HttpResponse};
+
 
 #[derive(Debug)]
 pub enum AppErrorType {
     DbError,
     #[allow(dead_code)]
     NotFoundError,
+    InvalidField
 }
 
 #[derive(Debug)]
@@ -30,10 +33,22 @@ impl AppError {
                 error_type: AppErrorType::NotFoundError,
                 ..
             } => "The requested item was not found".to_string(),
+            AppError {
+                error_type: AppErrorType::InvalidField,
+                ..
+            } => "Invalid field value provided".to_string(),
             _ => "An unexpected error has occurred".to_string(),
         }
     }
 }
+
+
+impl IntoFieldError for AppError {
+    fn into_field_error(self) -> FieldError { 
+        FieldError::new( self.message(), Value::null() )
+    }
+}
+
 
 impl From<PoolError> for AppError {
     fn from(error: PoolError) -> AppError {
@@ -71,30 +86,12 @@ impl fmt::Display for AppError {
     }
 }
 
-#[derive(Serialize)]
-pub struct AppErrorResponse {
-    pub error: String,
-}
 
-impl ResponseError for AppError {
-    fn status_code(&self) -> StatusCode {
-        match self.error_type {
-            AppErrorType::DbError => StatusCode::INTERNAL_SERVER_ERROR,
-            AppErrorType::NotFoundError => StatusCode::NOT_FOUND,
-        }
-    }
-    fn error_response(&self) -> HttpResponse {
-        HttpResponse::build(self.status_code()).json(AppErrorResponse {
-            error: self.message(),
-        })
-    }
-}
 
 #[cfg(test)]
 mod tests {
 
     use super::{AppError, AppErrorType};
-    use actix_web::error::ResponseError;
 
     #[test]
     fn test_default_db_error() {
@@ -143,21 +140,4 @@ mod tests {
         );
     }
 
-    #[test]
-    fn test_db_error_status_code() {
-        let expected = 500;
-
-        let db_error = AppError {
-            message: None,
-            cause: None,
-            error_type: AppErrorType::DbError,
-        };
-
-        assert_eq!(
-            db_error.status_code(),
-            expected,
-            "Status code for DbError should be {}",
-            expected
-        );
-    }
 }

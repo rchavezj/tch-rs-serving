@@ -1,5 +1,6 @@
-use crate::errors::AppError;
+use crate::errors::{AppError, AppErrorType};
 use crate::models::user::{User, CreateUser};
+
 use std::sync::Arc;
 use slog_scope::error;
 use deadpool_postgres::Pool;
@@ -64,7 +65,7 @@ pub struct Mutation {}
     Context = Context,
 )]
 impl Mutation {
-    async fn create_user(input: CreateUser, context: &Context) -> Result<User, FieldError> {
+    async fn create_user(input: CreateUser, context: &Context) -> Result<User, AppError> {
         let client: Client = context.pool
             .get()
             .await
@@ -88,7 +89,7 @@ impl Mutation {
                 &input.image
             ])
             .await
-            .map_err(|err| {
+            .map_err(|err: Error| {
                 let unique_error = err.code()
                     .map(|code| code == &SqlState::UNIQUE_VIOLATION);
                 
@@ -100,12 +101,12 @@ impl Mutation {
                     },
                     _ => AppError::from(err)
                 }
-            })
+            })?
             .iter()
             .map(|row| User::from_row_ref(row))
             .collect::<Result<Vec<User>, _>>()?
             .pop()
-            .ok_or(Err {
+            .ok_or(AppError {
                 message: Some("Error creating User.".to_string()),
                 cause: None,
                 error_type: AppErrorType::DbError
