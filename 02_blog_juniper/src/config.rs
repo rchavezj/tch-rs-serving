@@ -1,12 +1,15 @@
 pub use config::ConfigError;
-use deadpool_postgres::Pool;
-use dotenv::dotenv;
-use serde::Deserialize;
-use slog::{o, Drain};
+use crate::errors::{AppError, AppErrorType};
+
+use slog_term;
 use slog_async;
 use slog_envlogger;
-use slog_term;
+use dotenv::dotenv;
+use slog::{o, Drain};
+use serde::Deserialize;
+use argonautica::Hasher;
 use tokio_postgres::NoTls;
+use deadpool_postgres::Pool;
 use futures::compat::Future01CompatExt;
 
 #[derive(Deserialize)]
@@ -66,7 +69,7 @@ pub struct HashingService {
 }
 
 impl HashingService{
-    pub async fn hash(&self, password: String) -> Resullt<String, AppError>{
+    pub async fn hash(&self, password: String) -> Result<String, AppError>{
         Hasher::default()
             .with_password(&password)
             .with_secret_key(&self.secret_key)

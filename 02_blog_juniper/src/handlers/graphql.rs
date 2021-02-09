@@ -1,4 +1,7 @@
-use crate::errors::{AppError, AppErrorType};
+use crate::{
+    config::HashingService,  
+    errors::{AppError, AppErrorType}
+};
 use crate::models::user::{User, CreateUser};
 
 use std::sync::Arc;
@@ -12,6 +15,7 @@ use tokio_postgres::error::{Error, SqlState};
 #[derive(Clone)]
 pub struct Context {
     pub pool: Arc<Pool>,
+    pub hashing: Arc<HashingService>
 }
 
 /// Context Marker
@@ -78,7 +82,7 @@ impl Mutation {
             .prepare("insert into users (username, email, password, bio, image) values($1, $2, $3, $4, $5) returning *")
             .await?;
 
-        let password_hash = input.password_hash().await;
+        let password_hash = context.hashing.hash(input.password).await?;
 
         let user = client
             .query(&statement, &[
