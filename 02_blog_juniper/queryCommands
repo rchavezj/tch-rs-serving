@@ -1,0 +1,48 @@
+query version{
+  apiVersion
+}
+
+query getUser {
+  user(id: "f6c9cb9d-7c04-4bf1-a6ac-9383ded49ae9"){
+    id
+    username
+    email
+    bio
+    image
+    updatedAt
+    createdAt
+  }
+}
+
+query users{
+  users{
+    id
+    username
+    email
+    bio
+    image
+    updatedAt
+    createdAt
+  }
+}
+
+
+mutation createUser($input: CreateUser!){
+  createUser(input: $input){
+    id
+    username
+    email
+    bio
+    image
+    updatedAt
+    createdAt
+  }
+}
+
+{
+  "input": {
+    "username": "yolo",
+    "email": "yolo@blackmamba.com",
+    "password": "killerMentality"
+  }
+}
