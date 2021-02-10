@@ -1,21 +1,27 @@
 use crate::{
     config::HashingService,  
-    errors::{AppError, AppErrorType}
+    errors::{AppError},
+    models::user::{User, CreateUser},
+    repositories::user::UserRepository
 };
-use crate::models::user::{User, CreateUser};
 
+use uuid::Uuid;
 use std::sync::Arc;
-use slog_scope::error;
+use juniper::{RootNode};
 use deadpool_postgres::Pool;
-use deadpool_postgres::Client;
-use juniper::{FieldError, RootNode};
-use tokio_pg_mapper::FromTokioPostgresRow;
-use tokio_postgres::error::{Error, SqlState};
+
+
 
 #[derive(Clone)]
 pub struct Context {
     pub pool: Arc<Pool>,
     pub hashing: Arc<HashingService>
+}
+
+impl Context {
+    pub fn user_repository(&self) -> UserRepository {
+        UserRepository::new(self.pool.clone())
+    }
 }
 
 /// Context Marker
@@ -32,33 +38,12 @@ impl Query {
         "1.0"
     }
 
-    pub async fn users(context: &Context) -> Result<Vec<User>, FieldError> {
-        let client: Client = context.pool
-            .get()
-            .await
-            .map_err(|err| {
-                error!("Error getting client {}", err; "query" => "users");
-                err
-            })?;
+    pub async fn user(id: Uuid, context: &Context) -> Result<User, AppError> {
+        context.user_repository().get(id).await
+    }
 
-        let statement = client.prepare("select * from users").await?;
-
-        let users = client
-            .query(&statement, &[])
-            .await
-            .map_err(|err| {
-                error!("Error getting users. {}", err; "query" => "users");
-                err
-            })?
-            .iter()
-            .map(|row| User::from_row_ref(row))
-            .collect::<Result<Vec<User>, _>>()
-            .map_err(|err| {
-                error!("Error getting parsing users. {}", err; "query" => "users");
-                err
-            })?;
-
-        Ok(users)
+    pub async fn users(context: &Context) -> Result<Vec<User>, AppError> {
+        context.user_repository().all().await
     }
 }
 
@@ -70,53 +55,7 @@ pub struct Mutation {}
 )]
 impl Mutation {
     async fn create_user(input: CreateUser, context: &Context) -> Result<User, AppError> {
-        let client: Client = context.pool
-            .get()
-            .await
-            .map_err(|err| {
-                error!("Error getting client {}", err; "query" => "create_user");
-                err
-            })?;
-
-        let statement = client
-            .prepare("insert into users (username, email, password, bio, image) values($1, $2, $3, $4, $5) returning *")
-            .await?;
-
-        let password_hash = context.hashing.hash(input.password).await?;
-
-        let user = client
-            .query(&statement, &[
-                &input.username,
-                &input.email,
-                &password_hash,
-                &input.bio,
-                &input.image
-            ])
-            .await
-            .map_err(|err: Error| {
-                let unique_error = err.code()
-                    .map(|code| code == &SqlState::UNIQUE_VIOLATION);
-                
-                match unique_error{
-                    Some(true) => AppError{
-                        cause: Some(err.to_string()),
-                        message: Some("Username or email address already exists.".to_string()),
-                        error_type: AppErrorType::InvalidField
-                    },
-                    _ => AppError::from(err)
-                }
-            })?
-            .iter()
-            .map(|row| User::from_row_ref(row))
-            .collect::<Result<Vec<User>, _>>()?
-            .pop()
-            .ok_or(AppError {
-                message: Some("Error creating User.".to_string()),
-                cause: None,
-                error_type: AppErrorType::DbError
-            })?;
-
-        Ok(user)
+        context.user_repository().create(input, context.hashing.clone()).await   
     }
 }
 
@@ -127,3 +66,4 @@ pub type Schema = RootNode<'static, Query, Mutation>;
 pub fn create_schema() -> Schema {
     Schema::new(Query {}, Mutation{})
 }
+
