@@ -27,6 +27,19 @@ query users{
 }
 
 
+mutation createUser($inputUserID: CreateUser!){
+  createUser(input: $inputUserID){
+    id
+    username
+    email
+    bio
+    image
+    updatedAt
+    createdAt
+  }
+}
+
+
 query getPost {
   post(id: "45efad83-1b8c-4042-9958-d1b9face84e6") {
     id
@@ -56,17 +69,7 @@ query getPosts {
 
 
 
-mutation createUser($inputUserID: CreateUser!){
-  createUser(input: $inputUserID){
-    id
-    username
-    email
-    bio
-    image
-    updatedAt
-    createdAt
-  }
-}
+
 
 
 mutation createPost($inputPostID: CreatePost!){

@@ -1,0 +1,26 @@
+query getPost {
+  post(id: "45efad83-1b8c-4042-9958-d1b9face84e6") {
+    id
+    authorId
+    slug
+    title
+    description
+    body
+    updatedAt
+    createdAt
+  }
+}
+
+
+query getPosts {
+  posts {
+    id
+    authorId
+    slug
+    title
+    description
+    body
+    updatedAt
+    createdAt
+  }
+}

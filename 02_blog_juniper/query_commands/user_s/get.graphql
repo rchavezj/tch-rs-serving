@@ -1,0 +1,23 @@
+query getUser {
+  user(id: "45efad83-1b8c-4042-9958-d1b9face84e6"){
+    id
+    username
+    email
+    bio
+    image
+    updatedAt
+    createdAt
+  }
+}
+
+query users{
+  users{
+    id
+    username
+    email
+    bio
+    image
+    updatedAt
+    createdAt
+  }
+}
