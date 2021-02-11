@@ -3,7 +3,7 @@ query version{
 }
 
 query getUser {
-  user(id: "f6c9cb9d-7c04-4bf1-a6ac-9383ded49ae9"){
+  user(id: "45efad83-1b8c-4042-9958-d1b9face84e6"){
     id
     username
     email
@@ -27,8 +27,37 @@ query users{
 }
 
 
-mutation createUser($input: CreateUser!){
-  createUser(input: $input){
+query getPost {
+  post(id: "45efad83-1b8c-4042-9958-d1b9face84e6") {
+    id
+    authorId
+    slug
+    title
+    description
+    body
+    updatedAt
+    createdAt
+  }
+}
+
+
+query getPosts {
+  posts {
+    id
+    authorId
+    slug
+    title
+    description
+    body
+    updatedAt
+    createdAt
+  }
+}
+
+
+
+mutation createUser($inputUserID: CreateUser!){
+  createUser(input: $inputUserID){
     id
     username
     email
@@ -39,10 +68,35 @@ mutation createUser($input: CreateUser!){
   }
 }
 
+
+mutation createPost($inputPostID: CreatePost!){
+  createPost(input: $inputPostID){
+    id
+    authorId
+    slug
+    title
+    description
+    body
+    updatedAt
+    createdAt
+  }
+}
+
+
+
+
 {
-  "input": {
+  "inputUserID": {
     "username": "yolo",
     "email": "yolo@blackmamba.com",
     "password": "killerMentality"
+  },
+  "inputPostID": {
+    "authorId": "45efad83-1b8c-4042-9958-d1b9face84e6",
+		"slug": "slugYolo",
+    "title": "Yolo Book",
+    "description": "descYolo",
+    "body": "bodyYolo"
   }
 }
+
