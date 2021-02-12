@@ -1,6 +1,6 @@
 use crate::{
-    config::HashingService,  
-    errors::{AppError},
+    errors::AppError,
+    config::HashingService,
     models::{
         user::{User, CreateUser},
         post::{Post, CreatePost}
@@ -14,6 +14,7 @@ use crate::{
 use uuid::Uuid;
 use std::sync::Arc;
 use juniper::{RootNode};
+use chrono::NaiveDateTime;
 use deadpool_postgres::Pool;
 
 
@@ -64,8 +65,29 @@ impl Query {
     pub async fn posts(context: &Context) -> Result<Vec<Post>, AppError> {
         context.post_repository().all().await
     }
-
 }
+
+
+#[juniper::graphql_object(
+    Context = Context,
+)]
+impl User {
+    pub fn id(&self) -> Uuid { self.id }
+    pub fn username(&self) -> &str { self.username.as_str() }
+    pub fn email(&self) -> &str { self.email.as_str() }
+    pub fn bio(&self) -> Option<&str> { self.bio.as_deref() }
+    pub fn image(&self) -> Option<&str> { self.image.as_deref() }
+    pub fn created_at(&self) -> NaiveDateTime { self.created_at }
+    pub fn updated_at(&self) -> NaiveDateTime { self.updated_at }
+    pub async fn posts(
+        &self, context: &Context
+    ) -> Result<Vec<Post>, AppError> {
+        context.post_repository().get_for_user(self.id).await
+    }
+}
+
+
+
 
 
 pub struct Mutation {} 

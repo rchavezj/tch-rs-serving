@@ -51,6 +51,37 @@ impl PostRepository {
             })
     }
 
+
+    pub async fn get_for_user(&self, user_id: Uuid) -> Result<Vec<Post>, AppError> {
+        let client: Client = self.pool
+            .get()
+            .await
+            .map_err(|err| {
+                error!("Error getting client {}", err; "query" => "posts");
+                err
+            })?;
+
+        let statement = client.prepare("select * from posts where author_id = $1").await?;
+
+        let posts = client
+            .query(&statement, &[&user_id])
+            .await
+            .map_err(|err| {
+                error!("Error getting posts. {}", err; "query" => "posts");
+                err
+            })?
+            .iter()
+            .map(|row| Post::from_row_ref(row))
+            .collect::<Result<Vec<Post>, _>>()
+            .map_err(|err| {
+                error!("Error getting parsing posts. {}", err; "query" => "posts");
+                err
+            })?;
+
+        Ok(posts)
+    }
+
+
     pub async fn all(&self) -> Result<Vec<Post>, AppError> {
         let client: Client = self.pool
             .get()
