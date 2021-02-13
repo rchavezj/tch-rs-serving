@@ -44,24 +44,17 @@ pub struct Query {}
     Context = Context,
 )]
 impl Query {
-    pub async fn api_version() -> &str {
-        "1.0"
-    }
+    pub async fn api_version() -> &str { "1.0" }
 
     pub async fn user(id: Uuid, context: &Context) -> Result<User, AppError> {
         context.user_repository().get(id).await
     }
-
     pub async fn users(context: &Context) -> Result<Vec<User>, AppError> {
         context.user_repository().all().await
     }
-
-
-
     pub async fn post(id: Uuid, context: &Context) -> Result<Post, AppError> {
         context.post_repository().get(id).await
     }
-
     pub async fn posts(context: &Context) -> Result<Vec<Post>, AppError> {
         context.post_repository().all().await
     }
@@ -91,7 +84,6 @@ impl User {
 
 
 pub struct Mutation {} 
-
 
 #[juniper::graphql_object(
     Context = Context,

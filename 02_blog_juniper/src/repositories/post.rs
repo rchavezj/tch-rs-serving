@@ -3,19 +3,62 @@ use crate::{
     errors::{AppError, AppErrorType},
     models::post::{Post, CreatePost}
 };
-
+use std::{
+    sync::Arc,
+    collections::HashMap
+};
 use uuid::Uuid;
-use std::sync::Arc;
 use slog_scope::error;
 use deadpool_postgres::{Client, Pool};
 use tokio_pg_mapper::FromTokioPostgresRow;
 use tokio_postgres::error::{Error, SqlState};
 
 
-
 pub struct PostRepository {
     pool: Arc<Pool>
 }
+
+
+pub struct PostBatcher {
+    pool: Arc<Pool>
+}
+
+impl PostBatcher {
+    pub async fn get_posts_by_user_ids(
+        &self, 
+        hashmap: HashMap<Uuid, Vec<Post>>, 
+        ids: Vec<Uuid>
+    ) -> Result<(), AppError> {
+        let client: Client = self.pool
+            .get()
+            .await
+            .map_err(|err| {
+                error!("Error getting client {}", err; "query" => "get_posts_by_user_ids");
+                err
+            })?;
+
+        let statement = client.prepare("select * from posts where author_id = ANY($1)").await?;
+
+        client
+            .query(&statement, &[&ids])
+            .await
+            .map_err(|err| {
+                error!("Error getting posts. {}", err; "query" => "get_posts_by_user_ids");
+                err
+            })?
+            .iter()
+            .map(|row| Post::from_row_ref(row))
+            .collect::<Result<Vec<Post>, _>>()
+            .map_err(|err| {
+                error!("Error getting parsing posts. {}", err; "query" => "get_posts_by_user_ids");
+                err
+            })?;
+
+        Ok(())
+    }
+}
+
+
 
 impl PostRepository {
     pub fn new(pool: Arc<Pool>) -> PostRepository{
