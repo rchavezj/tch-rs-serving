@@ -52,7 +52,18 @@ impl PostBatcher {
             .map_err(|err| {
                 error!("Error getting parsing posts. {}", err; "query" => "get_posts_by_user_ids");
                 err
-            })?;
+            })?
+            .iter()
+            .fold(
+                hashmap,
+                |map: &mut HashMap<Uuid, Vec<Post>>, post: &Post| {
+                    let vec = map
+                        .entry(post.author_id)
+                        .or_insert_with(|| Vec::<Post>::new());
+                    vec.push(post.clone());
+                    map
+                }
+            );
 
         Ok(())
     }
