@@ -1,3 +1,8 @@
+extern crate tch;
+use tch::Tensor;
+
 fn main() {
-    println!("Hello, world!");
+    let t = Tensor::of_slice(&[3, 1, 4, 1, 5]);
+    let t = t * 2;
+    t.print();
 }
