@@ -10,7 +10,6 @@ use crate::{
         post::{PostRepository, PostLoader}
     }
 };
-
 use {
     uuid::Uuid,
     std::sync::Arc,
@@ -18,6 +17,7 @@ use {
     chrono::NaiveDateTime,
     deadpool_postgres::Pool
 };
+
 
 
 #[derive(Clone)]
@@ -72,39 +72,18 @@ impl Query {
     Context = Context
 )]
 impl User {
-    pub async fn posts(&self, context: &Context) -> Result<Vec<Post>, AppError> {
-        // context.post_repository().get_for_user(self.id).await
+    pub fn id(&self) -> Uuid { self.id }
+    pub fn email(&self) -> &str { self.email.as_str() }
+    pub fn bio(&self) -> Option<&str> { self.bio.as_deref() }
+    pub fn username(&self) -> &str { self.username.as_str() }
+    pub fn image(&self) -> Option<&str> { self.image.as_deref() }
+    pub fn created_at(&self) -> NaiveDateTime { self.created_at }
+    pub fn updated_at(&self) -> NaiveDateTime { self.updated_at }
+    pub async fn posts(
+        &self, context: &Context
+    ) -> Result<Vec<Post>, AppError> {
         context.post_loader.load(self.id).await
     }
-
-    pub fn id(&self) -> Uuid {
-        self.id
-    }
-
-    pub fn username(&self) -> &str {
-        self.username.as_str()
-    }
-
-    pub fn email(&self) -> &str {
-        self.email.as_str()
-    }
-
-    pub fn bio(&self) -> Option<&str> {
-        self.bio.as_deref()
-    }
-
-    pub fn image(&self) -> Option<&str> {
-        self.image.as_deref()
-    }
-
-    pub fn created_at(&self) -> NaiveDateTime {
-        self.created_at
-    }
-
-    pub fn updated_at(&self) -> NaiveDateTime {
-        self.updated_at
-    }
-
 }
 
 pub struct Mutation {}
