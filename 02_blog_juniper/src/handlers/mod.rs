@@ -1,12 +1,12 @@
 mod graphql;
 
-use crate::config::HashingService;
-
 use std::sync::Arc;
 use deadpool_postgres::Pool;
 use actix_web::{web, HttpResponse};
 use graphql::{create_schema, Schema, Context};
 use juniper::http::{graphiql::graphiql_source, GraphQLRequest};
+use crate::{repositories::post::get_post_loader, config::HashingService};
+
 
 
 async fn health() -> HttpResponse {
@@ -36,8 +36,10 @@ async fn graphql(
     hashing_service: web::Data<HashingService>
 ) -> HttpResponse {
     let pool: Arc<Pool> = pool.into_inner();
-    let hashing = hashing_service.into_inner();
-    let context = Context { pool, hashing };
+    let hashing: Arc<HashingService> = hashing_service.into_inner();
+    let post_loader = get_post_loader(pool.clone());
+    let context = Context { pool, hashing, post_loader };
     let res = data.execute(&schema, &context).await;
+
     HttpResponse::Ok().json(res)
 }
