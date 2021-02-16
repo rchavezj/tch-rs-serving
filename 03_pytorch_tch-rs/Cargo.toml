@@ -7,4 +7,6 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tch = { git = 'https://github.com/LaurentMazare/tch-rs' }
+tch = "0.3.1"
+clang-sys = "1.1.0"
+openssl = { version = "0.10", features = ["vendored"] }
