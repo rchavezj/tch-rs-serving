@@ -22,5 +22,5 @@ https://www.lpalmieri.com/posts/2019-12-01-taking-ml-to-production-with-rust-a-2
 # Contents: 
 |                        |                                          |
 | ---------------------- | ---------------------------------------- |
-| 1. [Server From Scratch](#Server-from-Scratch)             |  2. [Todo-Actix](#Todo-Actix) |
-| 3. [Actix with Juniper](#Actix-with-Juniper)               |  4. [Libtorch with Rust](#Libtorch-with-Rust)|
+| 00. [Server From Scratch](https://github.com/rchavezj/Rust_GraphQL_PyTorch/tree/main/00_server-from-scratch)             |  01. [Todo-Actix](https://github.com/rchavezj/Rust_GraphQL_PyTorch/tree/main/01_todo-actix) |
+| 02. [Actix with Juniper](https://github.com/rchavezj/Rust_GraphQL_PyTorch/tree/main/02_blog_juniper)               |  03. [Libtorch with Actix](https://github.com/rchavezj/Rust_GraphQL_PyTorch/tree/main/03_pytorch_tch-rs)|
