@@ -48,7 +48,7 @@ async fn main() -> io::Result<()> {
     .run()
     .await
 }
-  
+
 #[cfg(test)]
 #[cfg(feature = "integration_tests")]
 mod integration_tests;
