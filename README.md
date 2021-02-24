@@ -11,7 +11,7 @@ Full credit for sections 00-02 </br>
 
 I wish to build up my knowledge from the sources referenced to setup a Machine Learning Rust ecosystem into production. <br>
 
-# Why machine learning for Rust?
+# Why Rust for machine learning?
 https://www.lpalmieri.com/posts/2019-12-01-taking-ml-to-production-with-rust-a-25x-speedup/
 
 [![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
