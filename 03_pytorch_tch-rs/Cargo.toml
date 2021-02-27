@@ -8,5 +8,4 @@ edition = "2018"
 
 [dependencies]
 tch = "0.3.1"
-clang-sys = "1.1.0"
 openssl = { version = "0.10", features = ["vendored"] }
