@@ -1,5 +1,6 @@
-### Actix (Rust Web Framework) 
-### + Juniper (GraphQL + Rust) + Tokio (Async) + Tonic (gRPC) + tch-rs (PyTorch C++ API Rust Bindings)
+### tch-rs (PyTorch C++ API Rust Bindings) into production
+### + Tokio (Async) + Tonic (gRPC) + PostGresQL
+### + Actix (Web Framework) + Juniper (GraphQL + Rust)
 
 [![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
 [![Latest version](https://img.shields.io/crates/v/Rust_GraphQL)](https://crates.io/crates/tch)
