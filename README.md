@@ -3,6 +3,10 @@
 ## + Tokio (Async) + Tonic (gRPC)
 ## + tch-rs (PyTorch C++ API Rust Bindings)
 
+[![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
+[![Latest version](https://img.shields.io/crates/v/Rust_GraphQL)](https://crates.io/crates/tch)
+![License](https://img.shields.io/crates/l/tch.svg)
+
 This project will contain a back end stack with rust web framework Actix for fast API. Alongside Juniper, an integration of Rust w/ GraphQL. And Rust bindings (tch-rs) for the C++ API of PyTorch (Libtorch) using Torchscript. 
 
 Full credit for sections 00-02 </br>
@@ -17,11 +21,6 @@ I wish to build up my knowledge from the sources referenced to setup a Machine L
 
 # Why Rust for machine learning?
 https://www.lpalmieri.com/posts/2019-12-01-taking-ml-to-production-with-rust-a-25x-speedup/
-
-
-[![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
-[![Latest version](https://img.shields.io/crates/v/Rust_GraphQL)](https://crates.io/crates/tch)
-![License](https://img.shields.io/crates/l/tch.svg)
 
 
 # Contents: 
