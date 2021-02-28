@@ -1,5 +1,5 @@
 ### tch-rs (PyTorch C++ API Rust Bindings) into production
--------------------------------------------------------------------
+================================================================
 ### + Tokio (Async) + Tonic (gRPC) + PostGresQL
 ### + Actix (Web Framework) + Juniper (GraphQL + Rust)
 
