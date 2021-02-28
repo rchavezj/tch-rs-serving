@@ -14,6 +14,9 @@ I wish to build up my knowledge from the sources referenced to setup a Machine L
 # Why Rust for machine learning?
 https://www.lpalmieri.com/posts/2019-12-01-taking-ml-to-production-with-rust-a-25x-speedup/
 
+![alt text](https://github.com/rchavezj/Rust_GraphQL_PyTorch/blob/main/03_pytorch_tch-rs/img/PyTorch_DevOps_Workflow.png)
+
+
 [![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
 [![Latest version](https://img.shields.io/crates/v/Rust_GraphQL)](https://crates.io/crates/tch)
 ![License](https://img.shields.io/crates/l/tch.svg)
