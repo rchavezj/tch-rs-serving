@@ -16,11 +16,12 @@ Full credit for sections 00-02 </br>
 
 I wish to build up my knowledge from the sources referenced to setup a Machine Learning Rust ecosystem into production. <br>
 
-# PyTorch production options I want to consider
-![alt text](https://github.com/rchavezj/Rust_GraphQL_PyTorch/blob/main/03_pytorch_tch-rs/img/PyTorch_DevOps_Workflow_V2.png)
-
 # Why Rust for machine learning?
 https://www.lpalmieri.com/posts/2019-12-01-taking-ml-to-production-with-rust-a-25x-speedup/
+
+
+# PyTorch production options I want to consider
+![alt text](https://github.com/rchavezj/Rust_GraphQL_PyTorch/blob/main/03_pytorch_tch-rs/img/PyTorch_DevOps_Workflow_V2.png)
 
 
 # Contents: 
