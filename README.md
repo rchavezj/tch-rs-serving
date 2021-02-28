@@ -3,7 +3,7 @@
 ## + Tokio (Async) + Tonic (gRPC)
 ## + tch-rs (PyTorch C++ API Rust Bindings)
 
-![alt text](https://github.com/rchavezj/Rust_GraphQL_PyTorch/blob/main/03_pytorch_tch-rs/img/PyTorch_DevOps_Workflow.png)
+![alt text](https://github.com/rchavezj/Rust_GraphQL_PyTorch/blob/main/03_pytorch_tch-rs/img/PyTorch_DevOps_Workflow_V2.png)
 
 This project will contain a back end stack with rust web framework Actix for fast API. Alongside Juniper, an integration of Rust w/ GraphQL. And Rust bindings (tch-rs) for the C++ API of PyTorch (Libtorch) using Torchscript. 
 
