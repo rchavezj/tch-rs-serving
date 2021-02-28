@@ -1,11 +1,11 @@
 ### tch-rs (PyTorch C++ API Rust Bindings) into production
----
-### + Tokio (Async) + Tonic (gRPC) + PostGresQL
-### + Actix (Web Framework) + Juniper (GraphQL + Rust)
 
 [![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
 [![Latest version](https://img.shields.io/crates/v/Rust_GraphQL)](https://crates.io/crates/tch)
 ![License](https://img.shields.io/crates/l/tch.svg)
+
+### + Tokio (Async) + Tonic (gRPC) + PostGresQL
+### + Actix (Web Framework) + Juniper (GraphQL + Rust)
 
 This project will contain a back end stack with rust web framework Actix for fast API. Alongside Juniper, an integration of Rust w/ GraphQL. And Rust bindings (tch-rs) for the C++ API of PyTorch (Libtorch) using Torchscript. 
 
