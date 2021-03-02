@@ -45,7 +45,6 @@ async fn main() -> std::io::Result<()> {
     .bind(server_addr)?
     .run()
     .await
-
 }
 
 #[cfg(test)]
