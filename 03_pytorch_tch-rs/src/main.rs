@@ -1,9 +1,21 @@
-use tch::Tensor;
 extern crate tch;
+use anyhow::Result;
 
-fn main() {
-    let t = Tensor::of_slice(&[3, 1, 4, 1, 5]);
-    t.print();
-    let t = t * 2;
-    t.print();
+mod mnist_conv;
+mod mnist_linear;
+mod mnist_nn;
+
+fn main() -> Result<()> {
+    let args: Vec<String> = std::env::args().collect();
+    let model = if args.len() < 2 {
+        None
+    } else {
+        Some(args[1].as_str())
+    };
+    match model {
+        None => mnist_nn::run(),
+        Some("linear") => mnist_linear::run(),
+        Some("conv") => mnist_conv::run(),
+        Some(_) => mnist_nn::run(),
+    }
 }

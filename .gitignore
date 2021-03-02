@@ -5,3 +5,4 @@
 /02_blog_juniper/target
 
 /03_pytorch_tch-rs/target
+/03_pytorch_tch-rs/src/data

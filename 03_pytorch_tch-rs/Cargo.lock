@@ -313,6 +313,7 @@ dependencies = [
 name = "pytorch_tch-rs"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "openssl",
  "tch",
 ]
