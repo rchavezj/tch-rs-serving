@@ -6,7 +6,7 @@ use crate::errors::{AppError, AppErrorType};
 
 pub async fn get_todos(
     client: &Client
-) -> Result<Vec<TodoList>, AppError > {
+) -> Result<Vec<TodoList>, AppError> {
 
     let statement = client
         .prepare( 
