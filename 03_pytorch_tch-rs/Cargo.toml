@@ -1,5 +1,5 @@
 [package]
-name = "pytorch_tch-rs"
+name = "tch-rs-serving"
 version = "0.1.0"
 authors = ["Roberto Chavez Jr <rchavezj.ai@gmail.com>"]
 edition = "2018"
