@@ -2,6 +2,7 @@
 Remember to remove './todo-actix/target' folder before every git commit. </br>
 
 # Docker commands
+sudo dockerd
 sudo docker-compose up -d </br>
 sudo docker ps </br>
 sudo docker-compose stop </br>
@@ -18,6 +19,8 @@ psql -h 127.0.0.1 -p 5432 -U actix actix </br>
 psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 
 # Series of commands to create the tables with Docker image
+If you have an error connected to docker daemon:  <br>
+https://stackoverflow.com/questions/44678725/cannot-connect-to-the-docker-daemon-at-unix-var-run-docker-sock-is-the-docker#answer-54049645 <br> 
 sudo docker-compose up -d postgres </br>
 psql -h 127.0.0.1 -p 5432 -U actix actix < database.sql </br>
 
@@ -45,7 +48,7 @@ swapon -s </br>
 # Set of commands to setup server and retrieve data back to rust handler
 (0) cargo run </br>
 ### Switch terminals
-(1) sudo docker-compose up -d </br> 
+(1) psql -h 127.0.0.1 -p 5432 -U actix actix </br> 
 (2) sudo docker ps </br>
 (3) psql -h 127.0.0.1 -p 5432 -U actix actix </br>
     &nbsp;&nbsp;&nbsp; (3a List of relations)  \d  </br>
@@ -111,10 +114,10 @@ curl http://localhost:8080/todos/2/items -s | jq . </br>
 ### Series of commands to see why we need error handling
 (0) cargo run --> Switch terminal tab </br>
 (1) curl localhost:8080/todos -v | jq . </br>
-(2) docker-compose up -d postgres </br>
+(2) sudo docker-compose up -d postgres </br>
 (3) curl localhost:8080/todos -v | jq . </br>
 (4) psql -h 127.0.0.1 -p 5432 -U actix actix </br>
-(5) docker-compose stop </br>
+(5) sudo docker-compose stop </br>
 (6) curl localhost:8080/todos -v | jq . --> curl (52) Empty reply from server </br>
 ### Switch terminal tabs back to restart cargo run but with trace env variable (RUST_BACKREACE=1) 
 (7) RUST_BACKREACE=1 cargo run (Switch terminal tabs again) </br>

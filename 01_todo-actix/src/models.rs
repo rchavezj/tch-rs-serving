@@ -37,6 +37,16 @@ pub struct TodoItem {
 }
 
 
+#[derive(Serialize, Deserialize, PostgresMapper)]
+#[pg_mapper(table="todo_list", table="todo_item")]
+pub struct TodoInnerJoin {
+    pub list_title: String,
+    pub item_item: String,
+    pub checked: bool,
+    pub list_id: i32
+}
+
+
 #[derive(Deserialize)]
 pub struct CreateTodoList {
     pub title: String

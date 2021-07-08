@@ -1,6 +1,6 @@
 use deadpool_postgres::Client;
 use tokio_pg_mapper::FromTokioPostgresRow;
-use crate::models::{TodoList, TodoItem};
+use crate::models::{TodoList, TodoItem, TodoInnerJoin};
 use crate::errors::{AppError, AppErrorType};
 
 
@@ -49,6 +49,36 @@ pub async fn get_items(
     Ok(items)
 }
 
+
+
+pub async fn get_inner_join(
+    client: &Client,
+    list_id: i32
+) -> Result<Vec<TodoInnerJoin>, AppError> {
+    // Get the latest first
+    let statement = client
+        .prepare("
+            select 
+                todo_list.title, todo_item.title, 
+                todo_item.checked, todo_item.list_id 
+            from 
+                todo_list inner join todo_item 
+            ON 
+                todo_list.id = todo_item.list_id and 
+                todo_item.list_id = $1;
+        ")
+        .await
+        .map_err(AppError::db_error)?;
+
+    let items = client.query(&statement, &[&list_id])
+        .await
+        .map_err(AppError::db_error)?
+        .iter()
+        .map(|row| TodoInnerJoin::from_row_ref(row).unwrap())
+        .collect::<Vec<TodoInnerJoin>>();
+        
+    Ok(items)
+}
 
 
 pub async fn create_todo(

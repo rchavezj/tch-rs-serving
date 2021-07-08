@@ -1,3 +1,4 @@
+
 use crate::{
     errors::AppError,
     config::HashingService,
@@ -106,3 +107,5 @@ pub type Schema = RootNode<'static, Query, Mutation>;
 pub fn create_schema() -> Schema {
     Schema::new(Query {}, Mutation {})
 }
+
+

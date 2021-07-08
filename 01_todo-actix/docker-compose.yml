@@ -34,3 +34,4 @@ services:
           cpus: '4'
     ports:
       - 8080:8080
+      
