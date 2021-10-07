@@ -14,6 +14,7 @@ Full credit for sections 00-02 </br>
 [Tokio.rs](https://tokio.rs/) </br>
 [Rust fundamentals](https://www.udemy.com/course/rust-fundamentals/) </br>
 [Genus-v Programming](https://www.youtube.com/playlist?list=PLECOtlti4Psr4hXVX5GuSvLKp0-RZjz93) </br>
+[Torch Audio Course](https://www.youtube.com/playlist?list=PL-wATfeyAMNoirN4idjev6aRu8ISZYVWm) </br>
 
 I wish to build up my knowledge from the sources referenced to setup a Machine Learning Rust ecosystem into production. <br>
 

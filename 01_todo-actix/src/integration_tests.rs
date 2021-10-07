@@ -43,6 +43,25 @@ async fn test_get_todos() {
     assert_eq!(res.status(), 200, "GET /todos should return status 200");
 }
 
+
+#[actix_rt::test]
+async fn test_get_inner_join() {
+
+    let app = App::new()
+        .data(APP_STATE.clone())
+        .route("/todos{_:/?}", web::get().to(get_inner_join));
+    
+    let mut app = test::init_service(app).await;
+
+    let req = test::TestRequest::get()
+        .uri("/todos/{list_id}/innerJoins{_:/?}")
+        .to_request();
+
+    let res = test::call_service(&mut app, req).await;
+
+    assert_eq!(res.status(), 200, "GET /todos should return status 200");
+}
+
 #[actix_rt::test]
 async fn test_create_todos() {
     
