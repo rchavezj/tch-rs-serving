@@ -1,4 +1,4 @@
-### (Under Construction)
+### (Dead Project...sorry)
 ### tch-rs (PyTorch C++ API Rust Bindings) into production
 
 [![Build Status](https://travis-ci.org/rchavezj/Rust_GraphQL.svg?branch=main)](https://travis-ci.org/rchavezj/Rust_GraphQL)
